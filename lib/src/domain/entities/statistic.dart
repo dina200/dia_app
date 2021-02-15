@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
-
 import 'package:intl/intl.dart';
+
+import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
 abstract class Statistic {
   final DateTime timeMeasure;
@@ -19,29 +20,42 @@ abstract class Statistic {
 }
 
 class SugarInBloodStatistic extends Statistic {
-  final double sugarInBlood;
+  final double bloodSugar;
 
   SugarInBloodStatistic({
     @required DateTime timeMeasure,
-    @required this.sugarInBlood,
-  })  : assert(sugarInBlood != null),
+    @required this.bloodSugar,
+  })  : assert(bloodSugar != null),
         super(timeMeasure);
 
-  SugarInBloodDiagnosis get diagnosis {
-    if (sugarInBlood < 4.1) {
-      return SugarInBloodDiagnosis.hypoglycemia;
-    } else if (sugarInBlood > 5.9) {
-      return SugarInBloodDiagnosis.hyperglycemia;
+  BloodSugarDiagnosis get diagnosis {
+    if (bloodSugar < 4.1) {
+      return BloodSugarDiagnosis.hypoglycemia;
+    } else if (bloodSugar > 5.9) {
+      return BloodSugarDiagnosis.hyperglycemia;
     }
-    return SugarInBloodDiagnosis.normal;
+    return BloodSugarDiagnosis.normal;
   }
 
-  String toString() {
-    return '${DateFormat('dd.MM.yyyy HH:mm').format(timeMeasure)}, ${sugarInBlood.toStringAsFixed(1).toString()} mmol/L, $diagnosis';
+  String getFullData(DiaLocalizations locale) {
+    String bloodSugarDiagnosis = _getDiagnosisByBloodSugar(locale);
+    final date = DateFormat('dd.MM.yyyy HH:mm').format(timeMeasure);
+    final dataOfBloodSugar = '${bloodSugar.toStringAsFixed(1).toString()}';
+
+    return '$date, $dataOfBloodSugar ${locale.mmolPerL}, $bloodSugarDiagnosis';
+  }
+
+  String _getDiagnosisByBloodSugar(DiaLocalizations locale) {
+    switch (diagnosis) {
+      case BloodSugarDiagnosis.hypoglycemia: return locale.hypoglycemia;
+      case BloodSugarDiagnosis.hyperglycemia: return locale.hyperglycemia;
+      case BloodSugarDiagnosis.normal: return locale.normal;
+      default: return '-';
+    }
   }
 }
 
-enum SugarInBloodDiagnosis {
+enum BloodSugarDiagnosis {
   hypoglycemia,
   hyperglycemia,
   normal,

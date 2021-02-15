@@ -9,5 +9,9 @@
   "showDiagnosis": "Показать диагноз",
   "user": "Пользователь",
   "diagnostics": "Диагностика",
-  "statistics": "Статистика"
+  "statistics": "Статистика",
+  "mmolPerL": "ммоль/л",
+  "hypoglycemia": "Гипогликемия",
+  "hyperglycemia": "Гипергликемия",
+  "normal": "Норма"
 }

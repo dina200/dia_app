@@ -53,5 +53,25 @@
   "@statistics": {
     "type": "text",
     "description": "The name of third tab on main screen"
+  },
+  "mmolPerL": "mmol/L",
+  "@mmolPerL": {
+    "type": "text",
+    "description": "Medical tests report results in millimoles per litre"
+  },
+  "hypoglycemia": "Hypoglycemia",
+  "@hypoglycemia": {
+    "type": "text",
+    "description": "This is a condition in which blood sugar (glucose) level is lower than normal"
+  },
+  "hyperglycemia": "Hyperglycemia",
+  "@hyperglycemia": {
+    "type": "text",
+    "description": "This refers to high levels of sugar, or glucose, in the blood"
+  },
+  "normal": "Normal",
+  "@normal": {
+    "type": "text",
+    "description": "This is a condition in which blood sugar (glucose) level is normal"
   }
 }

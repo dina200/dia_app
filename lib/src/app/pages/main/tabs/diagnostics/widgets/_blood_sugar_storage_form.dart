@@ -44,8 +44,13 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
               child: Text(_locale.sendNewMeasure),
               onPressed: () {
                 //TODO: save data to backend
-                if (_formKey.currentState.validate())
-                  print(_sugarInBloodKey.currentState.value);
+                if (_formKey.currentState.validate()) {
+                  final sugarBloodStatistic = SugarInBloodStatistic(
+                    timeMeasure: DateTime.now(),
+                    bloodSugar: double.tryParse(_sugarInBloodKey.currentState.value),
+                  );
+                  print(sugarBloodStatistic.getFullData(_locale));
+                }
               },
             ),
             RaisedButton(

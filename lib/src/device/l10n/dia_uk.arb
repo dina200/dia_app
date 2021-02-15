@@ -1,6 +1,6 @@
 {
   "appName": "Dia App",
-  "enterSugarInBloodMeasure": "Будь ласка, додайте показник рівня цукру в крові (ммоль / л)",
+  "enterSugarInBloodMeasure": "Будь ласка, додайте показник рівня цукру в крові (ммоль/л)",
   "bloodSugarDataExample": "Приклад: 4.5",
   "errorInputData": "Будь ласка, введіть дані ...",
   "errorExampleOfInput": "Приклад формату введення: \"4.5\"",
@@ -9,5 +9,9 @@
   "showDiagnosis": "Показати діагноз",
   "user": "Користувач",
   "diagnostics": "Діагностика",
-  "statistics": "Статистика"
+  "statistics": "Статистика",
+  "mmolPerL": "ммоль/л",
+  "hypoglycemia": "Гіпоглікемія",
+  "hyperglycemia": "Гіперглікемія",
+  "normal": "Норма"
 }
