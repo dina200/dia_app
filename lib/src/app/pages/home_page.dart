@@ -7,8 +7,8 @@ class HomePage extends StatelessWidget {
 
   static PageRoute<HomePage> buildPageRoute() {
     return MaterialPageRoute<HomePage>(
-      builder: _builder,
       settings: RouteSettings(name: nameRoute),
+      builder: _builder,
     );
   }
 

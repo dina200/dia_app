@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
 import 'src/app/pages/home_page.dart';
 
@@ -13,8 +14,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      onGenerateTitle: _onGenerateTitle,
       onGenerateRoute: _onGenerateRoute,
+      localizationsDelegates: DiaLocalizations.localizationsDelegates,
+      supportedLocales: DiaLocalizations.supportedLocales,
     );
+  }
+
+  String _onGenerateTitle(BuildContext context) {
+    return DiaLocalizations.of(context).appName;
   }
 
   Route _onGenerateRoute(RouteSettings settings) {

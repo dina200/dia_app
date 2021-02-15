@@ -7,10 +7,10 @@ abstract class Statistic {
 
   Statistic(this.timeMeasure) : assert(timeMeasure != null);
 
-  int compareTo(Statistic statistic) {
-    if (timeMeasure.isAfter(statistic.timeMeasure)) {
+  int compareTo(Statistic anotherStatistic) {
+    if (timeMeasure.isAfter(anotherStatistic.timeMeasure)) {
       return -1;
-    } else if (timeMeasure.isBefore(statistic.timeMeasure)) {
+    } else if (timeMeasure.isBefore(anotherStatistic.timeMeasure)) {
       return 1;
     } else {
       return 0;
