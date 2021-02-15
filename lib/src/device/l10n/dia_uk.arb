@@ -1,3 +1,10 @@
 {
-  "appName": "Діагностика"
+  "appName": "Діагностика",
+  "enterSugarInBloodMeasure": "Будь ласка, додайте показник рівня цукру в крові (ммоль / л)",
+  "bloodSugarDataExample": "Приклад: 4.5",
+  "errorInputData": "Будь ласка, введіть дані ...",
+  "errorExampleOfInput": "Приклад формату введення: \"4.5\"",
+  "errorInvalidDataOfBloodSugar": "0.0 < значення < 70.0",
+  "sendNewMeasure": "Надішліть вимірювання цукру в крові",
+  "showDiagnosis": "Показати діагноз"
 }

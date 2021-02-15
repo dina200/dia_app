@@ -1,7 +1,42 @@
 {
-  "appName": "Dia App",
+  "appName": "Diagnosis",
   "@appName": {
     "type": "text",
     "description": "The application name"
+  },
+  "enterSugarInBloodMeasure": "Please, add the data of blood sugar (mmol/L)",
+  "@enterSugarInBloodMeasure": {
+    "type": "text",
+    "description": "An asking to add the data of blood sugar"
+  },
+  "bloodSugarDataExample": "The example: 4.5",
+  "@bloodSugarDataExample": {
+    "type": "text",
+    "description": "The example of input blood sugar"
+  },
+  "errorInputData": "Please, input data...",
+  "@errorInputData": {
+    "type": "text",
+    "description": "The error message if the input field is empty"
+  },
+  "errorExampleOfInput": "Example of input format: \"4.5\"",
+  "@errorExampleOfInput": {
+    "type": "text",
+    "description": "The error message if the input format is incorrect"
+  },
+  "errorInvalidDataOfBloodSugar": "0.0 < value < 70.0",
+  "@errorInvalidDataOfBloodSugar": {
+    "type": "text",
+    "description": "The error message about invalid data of blood sugar"
+  },
+  "sendNewMeasure": "Send the blood sugar measurement",
+  "@sendNewMeasure": {
+    "type": "text",
+    "description": "The button's title for a sending data about blood sugar"
+  },
+  "showDiagnosis": "Show diagnosis",
+  "@showDiagnosis": {
+    "type": "text",
+    "description": "The button's title for a showing diagnosis"
   }
 }

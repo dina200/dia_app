@@ -1,3 +1,10 @@
 {
-  "appName": "Диагностика"
+  "appName": "Диагностика",
+  "enterSugarInBloodMeasure": "Пожалуйста, добавьте данные сахара в крови (ммоль/л)",
+  "bloodSugarDataExample": "Пример: 4.5",
+  "errorInputData": "Пожалуйста, введите данные",
+  "errorExampleOfInput": "Пример формата ввода: \"4.5\"",
+  "errorInvalidDataOfBloodSugar": "0.0 < значение < 70.0",
+  "sendNewMeasure": "Отправить измерение сахара в крови",
+  "showDiagnosis": "Показать диагноз"
 }
