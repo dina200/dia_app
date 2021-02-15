@@ -5,7 +5,7 @@
   "errorInputData": "Будь ласка, введіть дані ...",
   "errorExampleOfInput": "Приклад формату введення: \"4.5\"",
   "errorInvalidDataOfBloodSugar": "0.0 < значення < 70.0",
-  "sendNewMeasure": "Надішліть вимірювання цукру в крові",
+  "sendNewData": "Надішліть вимірювання цукру в крові",
   "showDiagnosis": "Показати діагноз",
   "user": "Користувач",
   "diagnostics": "Діагностика",
@@ -13,5 +13,13 @@
   "mmolPerL": "ммоль/л",
   "hypoglycemia": "Гіпоглікемія",
   "hyperglycemia": "Гіперглікемія",
-  "normal": "Норма"
+  "normal": "Норма",
+  "dataNotSaved": "Дані не збережено",
+  "userName": "Ім'я користувача",
+  "userNameExample": "Іван Іванов",
+  "docEmail": "Електронна пошта доктора",
+  "docEmailExample": "Приклад: doc@mail.com",
+  "invalidEmailFormat": "Невірний формат електронної пошти",
+  "save": "Зберегти",
+  "exit": "Вийти"
 }

@@ -14,53 +14,39 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              _locale.enterSugarInBloodMeasure,
-              style: _theme.textTheme.subtitle1,
+    return Form(
+      key: _formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            _locale.enterSugarInBloodMeasure,
+            style: _theme.textTheme.subtitle1,
+            textAlign: TextAlign.center,
+          ),
+          SizeWrapperForTextFormField(
+            child: TextFormField(
+              key: _sugarInBloodKey,
               textAlign: TextAlign.center,
-            ),
-            SizedBox(
-              height: 70.0,
-              child: TextFormField(
-                key: _sugarInBloodKey,
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: _bloodSugarValidator,
-                decoration: InputDecoration(
-                  hintText: _locale.bloodSugarDataExample,
-                ),
+              keyboardType: TextInputType.number,
+              validator: _bloodSugarValidator,
+              decoration: InputDecoration(
+                hintText: _locale.bloodSugarDataExample,
               ),
             ),
-            SizedBox(height: 16.0),
-            RaisedButton(
-              child: Text(_locale.sendNewMeasure),
-              onPressed: () {
-                //TODO: save data to backend
-                if (_formKey.currentState.validate()) {
-                  final sugarBloodStatistic = SugarInBloodStatistic(
-                    timeMeasure: DateTime.now(),
-                    bloodSugar: double.tryParse(_sugarInBloodKey.currentState.value),
-                  );
-                  print(sugarBloodStatistic.getFullData(_locale));
-                }
-              },
-            ),
-            RaisedButton(
-              child: Text(_locale.showDiagnosis),
-              onPressed: () {
-                //TODO: navigate to diagnosis page
-              },
-            ),
-          ],
-        ),
+          ),
+          SizedBox(height: 16.0),
+          RaisedButton(
+            child: Text(_locale.sendNewData),
+            onPressed: _onSendNewDataPressed,
+          ),
+          SizedBox(height: 32.0),
+          RaisedButton(
+            child: Text(_locale.showDiagnosis),
+            onPressed: _onShowDiagnosisPressed,
+          ),
+        ],
       ),
     );
   }
@@ -79,5 +65,31 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
       }
     }
     return null;
+  }
+
+  void _onSendNewDataPressed() {
+    //TODO: save data to backend
+    if (_formKey.currentState.validate()) {
+      final sugarBloodStatistic = SugarInBloodStatistic(
+        timeMeasure: DateTime.now(),
+        bloodSugar: double.tryParse(_sugarInBloodKey.currentState.value),
+      );
+      _showSnackBar(Text(sugarBloodStatistic.getFullData(_locale)));
+    } else {
+      _showSnackBar(
+        Text(
+          _locale.dataNotSaved,
+          style: TextStyle(color: _theme.errorColor),
+        ),
+      );
+    }
+  }
+
+  void _showSnackBar(Text text) {
+    Scaffold.of(context).showSnackBar(SnackBar(content: text));
+  }
+
+  void _onShowDiagnosisPressed() {
+    //TODO: navigate to diagnosis page
   }
 }

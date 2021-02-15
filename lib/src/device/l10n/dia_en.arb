@@ -29,8 +29,8 @@
     "type": "text",
     "description": "The error message about invalid data of blood sugar"
   },
-  "sendNewMeasure": "Send the blood sugar measurement",
-  "@sendNewMeasure": {
+  "sendNewData": "Send the blood sugar data",
+  "@sendNewData": {
     "type": "text",
     "description": "The button's title for a sending data about blood sugar"
   },
@@ -73,5 +73,45 @@
   "@normal": {
     "type": "text",
     "description": "This is a condition in which blood sugar (glucose) level is normal"
+  },
+  "dataNotSaved": "The data isn't saved",
+  "@dataNotSaved": {
+    "type": "text",
+    "description": "The error message if the data was not saved"
+  },
+  "userName": "User's name",
+  "@userName": {
+    "type": "text",
+    "description": "The name of user's name field"
+  },
+  "userNameExample": "Ivan Ivanov",
+  "@userNameExample": {
+    "type": "text",
+    "description": "The example of input user name"
+  },
+  "docEmail": "Doc's e-mail",
+  "@docEmail": {
+    "type": "text",
+    "description": "The name of doc's e-mail field"
+  },
+  "docEmailExample": "The e-mail example: doc@mail.com",
+  "@docEmailExample": {
+    "type": "text",
+    "description": "The example of input doc's e-mail"
+  },
+  "invalidEmailFormat": "Invalid e-mail format",
+  "@invalidEmailFormat": {
+    "type": "text",
+    "description": "The error message if the e-mail format is invalid"
+  },
+  "save": "Save",
+  "@save": {
+    "type": "text",
+    "description": "The button's title for a saving some data"
+  },
+  "exit": "Exit",
+  "@exit": {
+    "type": "text",
+    "description": "The button's title for a leaving the account"
   }
 }

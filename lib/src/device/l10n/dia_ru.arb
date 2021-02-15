@@ -5,7 +5,7 @@
   "errorInputData": "Пожалуйста, введите данные",
   "errorExampleOfInput": "Пример формата ввода: \"4.5\"",
   "errorInvalidDataOfBloodSugar": "0.0 < значение < 70.0",
-  "sendNewMeasure": "Отправить измерение сахара в крови",
+  "sendNewData": "Отправить измерения сахара в крови",
   "showDiagnosis": "Показать диагноз",
   "user": "Пользователь",
   "diagnostics": "Диагностика",
@@ -13,5 +13,13 @@
   "mmolPerL": "ммоль/л",
   "hypoglycemia": "Гипогликемия",
   "hyperglycemia": "Гипергликемия",
-  "normal": "Норма"
+  "normal": "Норма",
+  "dataNotSaved": "Данные не сохранены",
+  "userName": "Имя пользователя",
+  "userNameExample": "Иван Иванов",
+  "docEmail": "Электронная почта доктора",
+  "docEmailExample": "Пример: doc@mail.com",
+  "invalidEmailFormat": "Неверный формат электронной почты",
+  "save": "Сохранить",
+  "exit": "Выйти"
 }
