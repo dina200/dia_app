@@ -1,10 +1,13 @@
 {
-  "appName": "Диагностика",
-  "enterSugarInBloodMeasure": "Пожалуйста, добавьте данные сахара в крови (ммоль/л)",
+  "appName": "Dia App",
+  "enterSugarInBloodMeasure": "Пожалуйста, введите данные сахара в крови (ммоль/л)",
   "bloodSugarDataExample": "Пример: 4.5",
   "errorInputData": "Пожалуйста, введите данные",
   "errorExampleOfInput": "Пример формата ввода: \"4.5\"",
   "errorInvalidDataOfBloodSugar": "0.0 < значение < 70.0",
   "sendNewMeasure": "Отправить измерение сахара в крови",
-  "showDiagnosis": "Показать диагноз"
+  "showDiagnosis": "Показать диагноз",
+  "user": "Пользователь",
+  "diagnostics": "Диагностика",
+  "statistics": "Статистика"
 }

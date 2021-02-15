@@ -1,13 +1,13 @@
 {
-  "appName": "Diagnosis",
+  "appName": "Dia App",
   "@appName": {
     "type": "text",
     "description": "The application name"
   },
-  "enterSugarInBloodMeasure": "Please, add the data of blood sugar (mmol/L)",
+  "enterSugarInBloodMeasure": "Please, enter the data of blood sugar (mmol/L)",
   "@enterSugarInBloodMeasure": {
     "type": "text",
-    "description": "An asking to add the data of blood sugar"
+    "description": "An asking to enter the data of blood sugar"
   },
   "bloodSugarDataExample": "The example: 4.5",
   "@bloodSugarDataExample": {
@@ -38,5 +38,20 @@
   "@showDiagnosis": {
     "type": "text",
     "description": "The button's title for a showing diagnosis"
+  },
+  "user": "User",
+  "@user": {
+    "type": "text",
+    "description": "The name of first tab on main screen"
+  },
+  "diagnostics": "Diagnostics",
+  "@diagnostics": {
+    "type": "text",
+    "description": "The name of second tab on main screen"
+  },
+  "statistics": "Statistics",
+  "@statistics": {
+    "type": "text",
+    "description": "The name of third tab on main screen"
   }
 }

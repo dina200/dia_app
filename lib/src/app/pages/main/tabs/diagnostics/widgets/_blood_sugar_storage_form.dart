@@ -1,4 +1,4 @@
-part of '../home_page.dart';
+part of '../diagnostics_tab.dart';
 
 class _BloodSugarStorageForm extends StatefulWidget {
   @override
@@ -23,7 +23,7 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
           children: <Widget>[
             Text(
               _locale.enterSugarInBloodMeasure,
-              style: _theme.textTheme.subtitle2,
+              style: _theme.textTheme.subtitle1,
               textAlign: TextAlign.center,
             ),
             SizedBox(
@@ -43,13 +43,16 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
             RaisedButton(
               child: Text(_locale.sendNewMeasure),
               onPressed: () {
+                //TODO: save data to backend
                 if (_formKey.currentState.validate())
                   print(_sugarInBloodKey.currentState.value);
               },
             ),
             RaisedButton(
               child: Text(_locale.showDiagnosis),
-              onPressed: () {},
+              onPressed: () {
+                //TODO: navigate to diagnosis page
+              },
             ),
           ],
         ),

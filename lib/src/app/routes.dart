@@ -1,1 +1,1 @@
-const home = '/home';
+const main = '/main';
