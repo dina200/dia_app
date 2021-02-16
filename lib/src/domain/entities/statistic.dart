@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:meta/meta.dart';
 import 'package:intl/intl.dart';
 
@@ -38,19 +40,36 @@ class SugarInBloodStatistic extends Statistic {
   }
 
   String getFullData(DiaLocalizations locale) {
-    String bloodSugarDiagnosis = _getDiagnosisByBloodSugar(locale);
-    final date = DateFormat('dd.MM.yyyy HH:mm').format(timeMeasure);
-    final dataOfBloodSugar = '${bloodSugar.toStringAsFixed(1).toString()}';
+    final dataOfBloodSugar = getBloodSugar(locale);
+    final bloodSugarDiagnosis = getDiagnosis(locale);
 
-    return '$date, $dataOfBloodSugar ${locale.mmolPerL}, $bloodSugarDiagnosis';
+    return '$formattedDateTime, $dataOfBloodSugar, $bloodSugarDiagnosis';
   }
 
-  String _getDiagnosisByBloodSugar(DiaLocalizations locale) {
+  String getDiagnosis(DiaLocalizations locale) {
     switch (diagnosis) {
       case BloodSugarDiagnosis.hypoglycemia: return locale.hypoglycemia;
       case BloodSugarDiagnosis.hyperglycemia: return locale.hyperglycemia;
       case BloodSugarDiagnosis.normal: return locale.normal;
       default: return '-';
+    }
+  }
+    
+  String get formattedDateTime {
+    return DateFormat('dd.MM.yyyy HH:mm').format(timeMeasure);
+  }
+
+  String getBloodSugar(DiaLocalizations locale) {
+    final dataOfBloodSugar = '${bloodSugar.toStringAsFixed(1).toString()}';
+    return '$dataOfBloodSugar ${locale.mmolPerL}';
+  }
+
+  Color get color {
+    switch (diagnosis) {
+      case BloodSugarDiagnosis.hypoglycemia: return Color(0xFFffadad);
+      case BloodSugarDiagnosis.hyperglycemia: return Color(0xFFA0C4FF);
+      case BloodSugarDiagnosis.normal: return Color(0xFFCAFFBF);
+      default: return Color(0xFFFFFFFF);
     }
   }
 }

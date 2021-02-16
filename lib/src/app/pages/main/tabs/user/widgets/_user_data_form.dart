@@ -28,6 +28,7 @@ class _UserDataFormState extends State<_UserDataForm> {
                 child: SizeWrapperForTextFormField(
                   child: TextFormField(
                     key: _userNameKey,
+                    //TODO: use user's data
                     initialValue: 'asd',
                     textAlign: TextAlign.center,
                     validator: _userNameValidator,
@@ -45,6 +46,7 @@ class _UserDataFormState extends State<_UserDataForm> {
                 child: SizeWrapperForTextFormField(
                   child: TextFormField(
                     key: _docEmailKey,
+                    //TODO: use user's data
                     initialValue: 'asd@asd.asd',
                     textAlign: TextAlign.center,
                     validator: _emailValidator,
