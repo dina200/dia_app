@@ -74,7 +74,11 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
         timeMeasure: DateTime.now(),
         bloodSugar: double.tryParse(_sugarInBloodKey.currentState.value),
       );
-      _showSnackBar(Text(sugarBloodStatistic.getFullData(_locale)));
+      _showSnackBar(
+        Text(
+          '${_locale.dataSaved}: ${sugarBloodStatistic.getFullData(_locale)}',
+        ),
+      );
     } else {
       _showSnackBar(
         Text(

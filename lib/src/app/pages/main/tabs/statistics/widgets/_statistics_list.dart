@@ -12,18 +12,21 @@ class _StatisticsListState extends State<_StatisticsList> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: list.length,
+      itemCount: list.length + 1,
       separatorBuilder: (context, i) => SizedBox(height: 1.0),
       itemBuilder: _itemBuilder,
     );
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
+    if(index == list.length) {
+      return SizedBox(height: 72.0);
+    }
     final item = list[index];
     return Material(
       color: item.color,
       child: ListTile(
-        subtitle: Text(item.formattedDateTime),
+        subtitle: Text(item.getFormattedDateTime(_locale)),
         title: Text(item.getBloodSugar(_locale)),
         trailing: Text(item.getDiagnosis(_locale)),
       ),

@@ -6,18 +6,14 @@ import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
 abstract class Statistic {
-  final DateTime timeMeasure;
+  final DateTime timeOfMeasure;
 
-  Statistic(this.timeMeasure) : assert(timeMeasure != null);
+  Statistic(this.timeOfMeasure) : assert(timeOfMeasure != null);
 
   int compareTo(Statistic anotherStatistic) {
-    if (timeMeasure.isAfter(anotherStatistic.timeMeasure)) {
-      return -1;
-    } else if (timeMeasure.isBefore(anotherStatistic.timeMeasure)) {
-      return 1;
-    } else {
-      return 0;
-    }
+    if (timeOfMeasure.isAfter(anotherStatistic.timeOfMeasure))  return -1;
+    else if (timeOfMeasure.isBefore(anotherStatistic.timeOfMeasure)) return 1;
+    else return 0;
   }
 }
 
@@ -40,6 +36,7 @@ class SugarInBloodStatistic extends Statistic {
   }
 
   String getFullData(DiaLocalizations locale) {
+    final formattedDateTime = getFormattedDateTime(locale);
     final dataOfBloodSugar = getBloodSugar(locale);
     final bloodSugarDiagnosis = getDiagnosis(locale);
 
@@ -55,8 +52,10 @@ class SugarInBloodStatistic extends Statistic {
     }
   }
     
-  String get formattedDateTime {
-    return DateFormat('dd.MM.yyyy HH:mm').format(timeMeasure);
+  String getFormattedDateTime(DiaLocalizations locale) {
+    final date = DateFormat.yMMMd(locale.localeName).format(timeOfMeasure);
+    final time = DateFormat.Hm(locale.localeName).format(timeOfMeasure);
+    return '$date $time';
   }
 
   String getBloodSugar(DiaLocalizations locale) {

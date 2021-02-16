@@ -63,13 +63,6 @@ class _UserDataFormState extends State<_UserDataForm> {
               //TODO: save data to backend
             },
           ),
-          SizedBox(height: 32.0),
-          RaisedButton(
-            child: Text(_locale.exit),
-            onPressed: () {
-              //TODO: exit
-            },
-          ),
         ],
       ),
     );

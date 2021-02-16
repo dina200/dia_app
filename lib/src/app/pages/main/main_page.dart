@@ -37,6 +37,7 @@ class _MainPageState extends State<MainPage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(_locale.appName),
+          actions: [_buildAppBarAction()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
@@ -57,12 +58,27 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
         body: _tabBuilder(),
+        floatingActionButton: _buildFloatActionButton(),
       ),
     );
   }
 
   void _resetFocusNode() {
     FocusScope.of(context).requestFocus(FocusNode());
+  }
+
+  Widget _buildAppBarAction() {
+    switch (_selectedIndex) {
+      case 0:
+        return IconButton(
+          icon: Icon(Icons.exit_to_app),
+          tooltip: _locale.changeUser,
+          onPressed: () {
+            //TODO: exit
+          },
+        );
+      default: return Container();
+    }
   }
 
   Widget _tabBuilder() {
@@ -76,5 +92,18 @@ class _MainPageState extends State<MainPage> {
 
   void _onItemTapped(int index) {
     setState(() => _selectedIndex = index);
+  }
+
+  Widget _buildFloatActionButton() {
+    switch (_selectedIndex) {
+      case 2:
+        return FloatingActionButton.extended(
+          label: Text('Sent the statistic to your doctor'),
+          onPressed: () {
+            //TODO: send data to doc
+          },
+        );
+      default: return null;
+    }
   }
 }

@@ -79,6 +79,11 @@
     "type": "text",
     "description": "The error message if the data was not saved"
   },
+  "dataSaved": "The data saved",
+  "@dataSaved": {
+    "type": "text",
+    "description": "The message if the data was saved successfully"
+  },
   "userName": "User's name",
   "@userName": {
     "type": "text",
@@ -109,8 +114,8 @@
     "type": "text",
     "description": "The button's title for a saving some data"
   },
-  "exit": "Exit",
-  "@exit": {
+  "changeUser": "Change user",
+  "@changeUser": {
     "type": "text",
     "description": "The button's title for a leaving the account"
   },
