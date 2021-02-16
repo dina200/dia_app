@@ -18,7 +18,6 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
       key: _formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text(
             _locale.enterSugarInBloodMeasure,
@@ -40,11 +39,6 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
           RaisedButton(
             child: Text(_locale.sendNewData),
             onPressed: _onSendNewDataPressed,
-          ),
-          SizedBox(height: 32.0),
-          RaisedButton(
-            child: Text(_locale.showDiagnosis),
-            onPressed: _onShowDiagnosisPressed,
           ),
         ],
       ),
@@ -91,9 +85,5 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
 
   void _showSnackBar(Text text) {
     Scaffold.of(context).showSnackBar(SnackBar(content: text));
-  }
-
-  void _onShowDiagnosisPressed() {
-    //TODO: navigate to diagnosis page
   }
 }

@@ -17,7 +17,7 @@
   "dataNotSaved": "Данные не сохранены",
   "dataSaved": "Данные сохранены",
   "userName": "Имя пользователя",
-  "userNameExample": "Иван Иванов",
+  "userNameExample": "Пример: Иван Иванов",
   "docEmail": "Электронная почта доктора",
   "docEmailExample": "Пример: doc@mail.com",
   "invalidEmailFormat": "Неверный формат электронной почты",

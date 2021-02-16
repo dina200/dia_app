@@ -89,7 +89,7 @@
     "type": "text",
     "description": "The name of user's name field"
   },
-  "userNameExample": "Ivan Ivanov",
+  "userNameExample": "The example: Ivan Ivanov",
   "@userNameExample": {
     "type": "text",
     "description": "The example of input user name"
@@ -99,7 +99,7 @@
     "type": "text",
     "description": "The name of doc's e-mail field"
   },
-  "docEmailExample": "The e-mail example: doc@mail.com",
+  "docEmailExample": "The example: doc@mail.com",
   "@docEmailExample": {
     "type": "text",
     "description": "The example of input doc's e-mail"

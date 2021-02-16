@@ -17,7 +17,7 @@
   "dataNotSaved": "Дані не збережено",
   "dataSaved": "Дані збережено",
   "userName": "Ім'я користувача",
-  "userNameExample": "Іван Іванов",
+  "userNameExample": "Приклад: Іван Іванов",
   "docEmail": "Електронна пошта доктора",
   "docEmailExample": "Приклад: doc@mail.com",
   "invalidEmailFormat": "Невірний формат електронної пошти",
