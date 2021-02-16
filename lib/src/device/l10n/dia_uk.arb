@@ -21,5 +21,10 @@
   "docEmailExample": "Приклад: doc@mail.com",
   "invalidEmailFormat": "Невірний формат електронної пошти",
   "save": "Зберегти",
-  "exit": "Вийти"
+  "exit": "Вийти",
+  "today": "Сьогодні",
+  "last7days": "Останні 7 днів",
+  "last30days": "Останні 30 днів",
+  "year": "Рік",
+  "wholeTime": "Цілий час"
 }

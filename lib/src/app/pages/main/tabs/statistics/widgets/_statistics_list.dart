@@ -7,7 +7,7 @@ class _StatisticsList extends StatefulWidget {
 
 class _StatisticsListState extends State<_StatisticsList> {
 
-  DiaLocalizations get locale => DiaLocalizations.of(context);
+  DiaLocalizations get _locale => DiaLocalizations.of(context);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,8 @@ class _StatisticsListState extends State<_StatisticsList> {
       color: item.color,
       child: ListTile(
         subtitle: Text(item.formattedDateTime),
-        title: Text(item.getBloodSugar(locale)),
-        trailing: Text(item.getDiagnosis(locale)),
+        title: Text(item.getBloodSugar(_locale)),
+        trailing: Text(item.getDiagnosis(_locale)),
       ),
     );
   }
