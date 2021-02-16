@@ -26,9 +26,9 @@ class _TimeRangeFilterTileState extends State<_TimeRangeFilterTile> {
       child: DropdownButton<TimeRangeFilters>(
         value: _currentFilter,
         onChanged: _changeFilter,
-        items: _filtersPayloads
-            .map<DropdownMenuItem<TimeRangeFilters>>(_buildDropdownMenuItem)
-            .toList(),
+        items: _timeRangeFiltersPayloads
+          .map<DropdownMenuItem<TimeRangeFilters>>(_buildDropdownMenuItem)
+          .toList(),
       ),
     );
   }
@@ -40,17 +40,17 @@ class _TimeRangeFilterTileState extends State<_TimeRangeFilterTile> {
     }
   }
 
-  List<_FilterPayload> get _filtersPayloads {
+  List<_TimeRangeFilterPayload> get _timeRangeFiltersPayloads {
     return [
-      _FilterPayload(name: _locale.today, filter: TimeRangeFilters.today),
-      _FilterPayload(name: _locale.last7days, filter: TimeRangeFilters.week),
-      _FilterPayload(name: _locale.last30days, filter: TimeRangeFilters.thisMonth),
-      _FilterPayload(name: _locale.year, filter: TimeRangeFilters.thisYear),
-      _FilterPayload(name: _locale.wholeTime, filter: TimeRangeFilters.wholeTime),
+      _TimeRangeFilterPayload(name: _locale.today, filter: TimeRangeFilters.today),
+      _TimeRangeFilterPayload(name: _locale.last7days, filter: TimeRangeFilters.week),
+      _TimeRangeFilterPayload(name: _locale.last30days, filter: TimeRangeFilters.thisMonth),
+      _TimeRangeFilterPayload(name: _locale.year, filter: TimeRangeFilters.thisYear),
+      _TimeRangeFilterPayload(name: _locale.wholeTime, filter: TimeRangeFilters.wholeTime),
     ];
   }
 
-  DropdownMenuItem<TimeRangeFilters> _buildDropdownMenuItem(_FilterPayload value) {
+  DropdownMenuItem<TimeRangeFilters> _buildDropdownMenuItem(_TimeRangeFilterPayload value) {
     return DropdownMenuItem<TimeRangeFilters>(
       value: value.filter,
       child: Text(value.name),
@@ -58,11 +58,11 @@ class _TimeRangeFilterTileState extends State<_TimeRangeFilterTile> {
   }
 }
 
-class _FilterPayload {
+class _TimeRangeFilterPayload {
   final String name;
   final TimeRangeFilters filter;
 
-  _FilterPayload({
+  _TimeRangeFilterPayload({
     @required this.name,
     @required this.filter,
   })  : assert(name != null),
