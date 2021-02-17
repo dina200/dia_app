@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
-import 'package:dia_app/src/data/mock_statistic_list.dart';
+import 'package:dia_app/src/data/mock_statistic.dart';
 import 'package:dia_app/src/domain/entities/time_range.dart';
 
 part 'widgets/_statistics_list.dart';

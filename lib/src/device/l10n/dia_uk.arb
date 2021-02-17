@@ -28,5 +28,8 @@
   "last30days": "Останні 30 днів",
   "year": "Рік",
   "wholeTime": "Цілий час",
-  "sendDataToDoc": "Надіслати статистику лікарю"
+  "sendDataToDoc": "Надіслати статистику лікарю",
+  "minMaxBloodSugar": "Мін.: {min}, Макс.: {max}",
+  "diagnosisData": "Ваш середній показник цукру в крові: {averageBloodSugar} ммоль/л.\nВаш діагноз: {averageBloodSugarDiagnosis}",
+  "referenceInfoAboutBloodSugar": "Норма: 4,1 < значення < 5,9.\nБудь ласка, проконсультуйтеся з лікарем"
 }

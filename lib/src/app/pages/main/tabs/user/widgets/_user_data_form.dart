@@ -11,6 +11,7 @@ class _UserDataFormState extends State<_UserDataForm> {
   final _docEmailKey = GlobalKey<FormFieldState<String>>();
 
   DiaLocalizations get _locale => DiaLocalizations.of(context);
+  User get _user => getUser();
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,7 @@ class _UserDataFormState extends State<_UserDataForm> {
                 child: SizeWrapperForTextFormField(
                   child: TextFormField(
                     key: _userNameKey,
-                    //TODO: use user's data
-                    initialValue: 'asd',
+                    initialValue: _user.fullName,
                     textAlign: TextAlign.center,
                     validator: _userNameValidator,
                     decoration: InputDecoration(hintText: _locale.userNameExample),
@@ -46,8 +46,7 @@ class _UserDataFormState extends State<_UserDataForm> {
                 child: SizeWrapperForTextFormField(
                   child: TextFormField(
                     key: _docEmailKey,
-                    //TODO: use user's data
-                    initialValue: 'asd@asd.asd',
+                    initialValue: _user.docsEmail,
                     textAlign: TextAlign.center,
                     validator: _emailValidator,
                     decoration: InputDecoration(hintText: _locale.docEmailExample),

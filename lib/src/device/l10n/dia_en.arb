@@ -148,5 +148,28 @@
   "@sendDataToDoc": {
     "type": "text",
     "description": "The name of floating action button for sending data to doctor"
+  },
+  "minMaxBloodSugar": "Min: {min}, Max: {max}",
+  "@minMaxBloodSugar": {
+    "type": "text",
+    "description": "Min/max values of blood sugar",
+    "placeholders": {
+      "min": {},
+      "max": {}
+    }
+  },
+  "diagnosisData": "Your average blood sugar indicator: {averageBloodSugar} mmol/L.\nYour diagnosis: {averageBloodSugarDiagnosis}",
+  "@diagnosisData": {
+    "type": "text",
+    "description": "The data about user's diagnosis",
+    "placeholders": {
+      "averageBloodSugar": {},
+      "averageBloodSugarDiagnosis": {}
+    }
+  },
+  "referenceInfoAboutBloodSugar": "Normal: 4.1 < value < 5.9.\nPlease, consult your doctor",
+  "@referenceInfoAboutBloodSugar": {
+    "type": "text",
+    "description": "The reference information about blood sugar levels"
   }
 }

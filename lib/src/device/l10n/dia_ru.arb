@@ -28,5 +28,8 @@
   "last30days": "Последние 30 дней",
   "year": "Год",
   "wholeTime": "Все время",
-  "sendDataToDoc": "Отправить статистику врачу"
+  "sendDataToDoc": "Отправить статистику врачу",
+  "minMaxBloodSugar": "Мин.: {min}, Макс.: {max}",
+  "diagnosisData": "Ваш средний показатель сахара в крови: {averageBloodSugar} ммоль/л.\nВаш диагноз: {averageBloodSugarDiagnosis}",
+  "referenceInfoAboutBloodSugar": "Норма: 4,1 < значение < 5,9.\nПожалуйста, проконсультируйтесь с врачом"
 }

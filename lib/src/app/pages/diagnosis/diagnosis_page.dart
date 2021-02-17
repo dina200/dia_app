@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 import 'package:fl_animated_linechart/fl_animated_linechart.dart';
 
-import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
-
 import 'package:dia_app/src/app/routes.dart' as routes;
-import 'package:dia_app/src/data/mock_statistic_list.dart';
+import 'package:dia_app/src/data/mock_statistic.dart';
 import 'package:dia_app/src/domain/entities/statistic.dart';
 
 part 'widgets/_diagnosis_chart.dart';

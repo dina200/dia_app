@@ -7,18 +7,24 @@ class _DiagnosisData extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = DiaLocalizations.of(context);
 
+    final min = getMinBloodSugarValue();
+    final max = getMaxBloodSugarValue();
+    final bloodSugar = averageBloodSugar.bloodSugar.toStringAsFixed(1);
+    final diagnosis = averageBloodSugar.getDiagnosis(locale);
+
     return Column(
       children: [
-        Text('Min: ${getMinBloodSugarValue()}, Max: ${getMaxBloodSugarValue()}'),
+        Text(locale.minMaxBloodSugar(min, max)),
         SizedBox(height: 50.0),
         Expanded(
           child: Column(
             children: [
               Text(
-                'Your blood indicator for last 7 days: ${averageBloodSugar.bloodSugar.toStringAsFixed(1)} mmol/L.\n Your diagnosis: ${averageBloodSugar.getDiagnosis(locale)}', textAlign: TextAlign.center,
+                locale.diagnosisData(bloodSugar, diagnosis),
+                textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18),
               ),
-              _buildRecommendationText(),
+              _buildRecommendationText(locale),
             ],
           ),
         ),
@@ -26,14 +32,14 @@ class _DiagnosisData extends StatelessWidget {
     );
   }
 
-  Widget _buildRecommendationText() {
+  Widget _buildRecommendationText(DiaLocalizations locale) {
     switch (averageBloodSugar.diagnosis) {
       case BloodSugarDiagnosis.hypoglycemia:
       case BloodSugarDiagnosis.hyperglycemia:
         return Padding(
           padding: const EdgeInsets.only(top: 32.0),
           child: Text(
-            'Normal: 4.1 < value < 5.9.\nPlease, consalt your doctor',
+            locale.referenceInfoAboutBloodSugar,
             textAlign: TextAlign.center,
           ),
         );
