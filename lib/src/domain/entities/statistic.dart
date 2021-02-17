@@ -6,25 +6,35 @@ import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
 abstract class Statistic {
-  final DateTime timeOfMeasure;
+  final DateTime dateTimeOfMeasure;
 
-  Statistic(this.timeOfMeasure) : assert(timeOfMeasure != null);
+  Statistic(this.dateTimeOfMeasure) : assert(dateTimeOfMeasure != null);
 
   int compareTo(Statistic anotherStatistic) {
-    if (timeOfMeasure.isAfter(anotherStatistic.timeOfMeasure))  return -1;
-    else if (timeOfMeasure.isBefore(anotherStatistic.timeOfMeasure)) return 1;
+    if (dateTimeOfMeasure.isAfter(anotherStatistic.dateTimeOfMeasure))  return -1;
+    else if (dateTimeOfMeasure.isBefore(anotherStatistic.dateTimeOfMeasure)) return 1;
     else return 0;
+  }
+
+  String getDateTime(DiaLocalizations locale) {
+    final date = DateFormat.yMMMd(locale.localeName).format(dateTimeOfMeasure);
+    final time = DateFormat.Hm(locale.localeName).format(dateTimeOfMeasure);
+    return '$date $time';
+  }
+
+  String getDate(DiaLocalizations locale) {
+    return DateFormat.yMd(locale.localeName).format(dateTimeOfMeasure);
   }
 }
 
-class SugarInBloodStatistic extends Statistic {
+class BloodSugarStatistic extends Statistic {
   final double bloodSugar;
 
-  SugarInBloodStatistic({
-    @required DateTime timeMeasure,
+  BloodSugarStatistic({
+    @required DateTime dateTimeOfMeasure,
     @required this.bloodSugar,
   })  : assert(bloodSugar != null),
-        super(timeMeasure);
+        super(dateTimeOfMeasure);
 
   BloodSugarDiagnosis get diagnosis {
     if (bloodSugar < 4.1) {
@@ -36,7 +46,7 @@ class SugarInBloodStatistic extends Statistic {
   }
 
   String getFullData(DiaLocalizations locale) {
-    final formattedDateTime = getFormattedDateTime(locale);
+    final formattedDateTime = getDateTime(locale);
     final dataOfBloodSugar = getBloodSugar(locale);
     final bloodSugarDiagnosis = getDiagnosis(locale);
 
@@ -50,12 +60,6 @@ class SugarInBloodStatistic extends Statistic {
       case BloodSugarDiagnosis.normal: return locale.normal;
       default: return '-';
     }
-  }
-    
-  String getFormattedDateTime(DiaLocalizations locale) {
-    final date = DateFormat.yMMMd(locale.localeName).format(timeOfMeasure);
-    final time = DateFormat.Hm(locale.localeName).format(timeOfMeasure);
-    return '$date $time';
   }
 
   String getBloodSugar(DiaLocalizations locale) {

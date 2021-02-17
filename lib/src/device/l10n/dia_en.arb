@@ -143,5 +143,10 @@
   "@wholeTime": {
     "type": "text",
     "description": "The fifth name of the time range filter"
+  },
+  "sendDataToDoc": "Send the statistic to your doctor",
+  "@sendDataToDoc": {
+    "type": "text",
+    "description": "The name of floating action button for sending data to doctor"
   }
 }

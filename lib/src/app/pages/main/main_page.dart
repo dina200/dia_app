@@ -98,7 +98,7 @@ class _MainPageState extends State<MainPage> {
     switch (_selectedIndex) {
       case 2:
         return FloatingActionButton.extended(
-          label: Text('Sent the statistic to your doctor'),
+          label: Text(_locale.sendDataToDoc),
           onPressed: () {
             //TODO: send data to doc
           },

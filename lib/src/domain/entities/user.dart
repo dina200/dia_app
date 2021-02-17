@@ -11,8 +11,8 @@ class User {
   })  : assert(id != null),
         assert(fullName != null);
 
-  Future<List<SugarInBloodStatistic>> getSugarInBloodStatistic() async {
+  Future<List<BloodSugarStatistic>> getSugarInBloodStatistic() async {
     // TODO: add statistic from backend using user id
-    return <SugarInBloodStatistic>[];
+    return <BloodSugarStatistic>[];
   }
 }

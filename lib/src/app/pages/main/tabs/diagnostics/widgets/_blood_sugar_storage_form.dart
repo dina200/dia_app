@@ -64,8 +64,8 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
   void _onSendNewDataPressed() {
     //TODO: save data to backend
     if (_formKey.currentState.validate()) {
-      final sugarBloodStatistic = SugarInBloodStatistic(
-        timeMeasure: DateTime.now(),
+      final sugarBloodStatistic = BloodSugarStatistic(
+        dateTimeOfMeasure: DateTime.now(),
         bloodSugar: double.tryParse(_sugarInBloodKey.currentState.value),
       );
       _showSnackBar(
