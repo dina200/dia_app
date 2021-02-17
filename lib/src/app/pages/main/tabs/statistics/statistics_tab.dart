@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
 import 'package:dia_app/src/data/mock_statistic.dart';
-import 'package:dia_app/src/domain/entities/time_range.dart';
+import 'package:dia_app/src/app/widgets/time_range_filter_tile.dart';
 
 part 'widgets/_statistics_list.dart';
-part 'widgets/_time_range_filter_tile.dart';
 
 class StatisticsTab extends StatelessWidget {
   @override
@@ -13,7 +12,7 @@ class StatisticsTab extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _TimeRangeFilterTile(onSort: _onSort),
+        TimeRangeFilterTile(onSort: _onSort),
         Expanded(child: _StatisticsList())
       ],
     );

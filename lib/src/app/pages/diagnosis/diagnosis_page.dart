@@ -4,7 +4,7 @@ import 'package:fl_animated_linechart/fl_animated_linechart.dart';
 
 import 'package:dia_app/src/app/routes.dart' as routes;
 import 'package:dia_app/src/data/mock_statistic.dart';
-import 'package:dia_app/src/domain/entities/statistic.dart';
+import 'package:dia_app/src/app/widgets/time_range_filter_tile.dart';
 
 part 'widgets/_diagnosis_chart.dart';
 part 'widgets/_diagnosis_data.dart';
@@ -30,14 +30,19 @@ class DiagnosisPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(locale.diagnostics)),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
+            TimeRangeFilterTile(onSort: _onSort),
             Expanded(child: _DiagnosisChart()),
             Expanded(child: _DiagnosisData()),
           ],
         ),
       ),
     );
+  }
+
+  void _onSort(_) {
+    //TODO: sort statistic by time range
   }
 }

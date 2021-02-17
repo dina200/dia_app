@@ -9,43 +9,23 @@ class _DiagnosisData extends StatelessWidget {
 
     final min = getMinBloodSugarValue();
     final max = getMaxBloodSugarValue();
-    final bloodSugar = averageBloodSugar.bloodSugar.toStringAsFixed(1);
-    final diagnosis = averageBloodSugar.getDiagnosis(locale);
+    final bloodSugar = averageBloodSugar.bloodSugar.toStringAsFixed(2);
 
     return Column(
       children: [
         Text(locale.minMaxBloodSugar(min, max)),
-        SizedBox(height: 50.0),
-        Expanded(
-          child: Column(
-            children: [
-              Text(
-                locale.diagnosisData(bloodSugar, diagnosis),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
-              ),
-              _buildRecommendationText(locale),
-            ],
-          ),
+        SizedBox(height: 32.0),
+        Text(
+          locale.diagnosisData(bloodSugar),
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 18.0),
+        ),
+        SizedBox(height: 8.0),
+        Text(
+          locale.referenceInfoAboutBloodSugar,
+          textAlign: TextAlign.center,
         ),
       ],
     );
-  }
-
-  Widget _buildRecommendationText(DiaLocalizations locale) {
-    switch (averageBloodSugar.diagnosis) {
-      case BloodSugarDiagnosis.hypoglycemia:
-      case BloodSugarDiagnosis.hyperglycemia:
-        return Padding(
-          padding: const EdgeInsets.only(top: 32.0),
-          child: Text(
-            locale.referenceInfoAboutBloodSugar,
-            textAlign: TextAlign.center,
-          ),
-        );
-      case BloodSugarDiagnosis.normal:
-      default:
-        return SizedBox();
-    }
   }
 }

@@ -1,11 +1,14 @@
-part of '../statistics_tab.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
+
+import 'package:dia_app/src/domain/entities/time_range.dart';
 
 typedef SortByTimeRangeCallback = void Function(TimeRangeFilters filter);
 
-class _TimeRangeFilterTile extends StatefulWidget {
+class TimeRangeFilterTile extends StatefulWidget {
   final SortByTimeRangeCallback onSort;
 
-  const _TimeRangeFilterTile({
+  const TimeRangeFilterTile({
     Key key,
     @required this.onSort,
   })  : assert(onSort != null),
@@ -15,7 +18,7 @@ class _TimeRangeFilterTile extends StatefulWidget {
   _TimeRangeFilterTileState createState() => _TimeRangeFilterTileState();
 }
 
-class _TimeRangeFilterTileState extends State<_TimeRangeFilterTile> {
+class _TimeRangeFilterTileState extends State<TimeRangeFilterTile> {
   TimeRangeFilters _currentFilter = TimeRangeFilters.values.first;
 
   DiaLocalizations get _locale => DiaLocalizations.of(context);

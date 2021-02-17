@@ -158,16 +158,15 @@
       "max": {}
     }
   },
-  "diagnosisData": "Your average blood sugar indicator: {averageBloodSugar} mmol/L.\nYour diagnosis: {averageBloodSugarDiagnosis}",
+  "diagnosisData": "Your average blood sugar indicator {averageBloodSugar} mmol/L.",
   "@diagnosisData": {
     "type": "text",
     "description": "The data about user's diagnosis",
     "placeholders": {
-      "averageBloodSugar": {},
-      "averageBloodSugarDiagnosis": {}
+      "averageBloodSugar": {}
     }
   },
-  "referenceInfoAboutBloodSugar": "Normal: 4.1 < value < 5.9.\nPlease, consult your doctor",
+  "referenceInfoAboutBloodSugar": "The norm is from 4.1 to 5.9.",
   "@referenceInfoAboutBloodSugar": {
     "type": "text",
     "description": "The reference information about blood sugar levels"
