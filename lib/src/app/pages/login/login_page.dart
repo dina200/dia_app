@@ -1,13 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
-import 'package:dia_app/src/app/pages/auth/registration/registration_page.dart';
 import 'package:dia_app/src/app/routes.dart' as routes;
 
-part 'widgets/_footer.dart';
 part 'widgets/_login_buttons.dart';
 
 class LoginPage extends StatelessWidget {
@@ -32,7 +29,7 @@ class LoginPage extends StatelessWidget {
         children: <Widget>[
           Expanded(child: _buildTitle()),
           Expanded(child: _LoginButtons()),
-          Expanded(child: _Footer())
+          Expanded(child: SizedBox())
         ],
       ),
     );

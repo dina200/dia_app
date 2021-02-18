@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
+import 'src/app/pages/login/login_page.dart';
 import 'src/app/pages/main/main_page.dart';
 
 void main() {
-  runApp(MyApp());
+  //TODO: check is user logged in
+  runApp(MyApp(isLoggedIn: false));
 }
 
 class MyApp extends StatelessWidget {
+  final bool isLoggedIn;
+
+  const MyApp({
+    Key key,
+    @required this.isLoggedIn,
+  })  : assert(isLoggedIn != null),
+        super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,6 +36,9 @@ class MyApp extends StatelessWidget {
   }
 
   Route _onGenerateRoute(RouteSettings settings) {
-    return MainPage.buildPageRoute();
+    if (isLoggedIn) {
+      return MainPage.buildPageRoute();
+    }
+    return LoginPage.buildPageRoute();
   }
 }
