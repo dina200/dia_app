@@ -1,12 +1,26 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
+import 'package:get_it/get_it.dart';
 
 import 'src/app/pages/login/login_page.dart';
 import 'src/app/pages/main/main_page.dart';
+import 'src/data/repositories/firebase_auth_repository.dart';
+import 'src/device/utils/google_service.dart';
+import 'src/device/utils/store_interactor.dart';
+import 'src/domain/repositories_contracts/auth_repository.dart';
 
-void main() {
-  //TODO: check is user logged in
-  runApp(MyApp(isLoggedIn: false));
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  GetIt.I
+    ..registerSingleton<GoogleService>(GoogleService())
+    ..registerSingleton<StoreInteractor>(StoreInteractor())
+    ..registerSingleton<AuthRepository>(FirebaseAuthRepository());
+
+  final isLoggedIn = await GetIt.I<AuthRepository>().isLoggedIn;
+  runApp(MyApp(isLoggedIn: isLoggedIn));
 }
 
 class MyApp extends StatelessWidget {

@@ -10,10 +10,9 @@ class User {
   User({
     @required this.id,
     @required this.fullName,
-    @required this.docsEmail,
+    this.docsEmail,
   })  : assert(id != null),
-        assert(fullName != null),
-        assert(docsEmail != null);
+        assert(fullName != null);
 
   Future<List<BloodSugarStatistic>> getSugarInBloodStatistic() async {
     // TODO: add statistic from backend using user id
