@@ -9,6 +9,12 @@ class _LoginButtons extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          //TODO: only for test - required to remove
+          RaisedButton(
+            child: Text('SIGN IN WITH TEST ACCOUNT'),
+            onPressed: _loginWithTestAccount,
+          ),
+          SizedBox(height: 16.0),
           RaisedButton(
             child: Text(locale.enterWithGoogle),
             onPressed: _loginWithGoogle,
@@ -28,6 +34,10 @@ class _LoginButtons extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _loginWithTestAccount() async {
+    //TODO: implement _loginWithTestAccount
   }
 
   Future<void> _loginWithGoogle() async {
