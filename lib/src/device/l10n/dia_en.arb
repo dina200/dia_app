@@ -2,7 +2,37 @@
   "appName": "Dia App",
   "@appName": {
     "type": "text",
-    "description": "The application name"
+    "description": "The application's name"
+  },
+  "tagline": "your health under control",
+  "@tagline": {
+    "type": "text",
+    "description": "The application's tagline"
+  },
+  "enterWithGoogle": "Sign in via Google",
+  "@enterWithGoogle": {
+    "type": "text",
+    "description": "The button's title for a signing in via Google"
+  },
+  "or": "or",
+  "@or": {
+    "type": "text",
+    "description": "It is used to link alternatives"
+  },
+  "enterWithApple": "Sign in via Apple",
+  "@enterWithApple": {
+    "type": "text",
+    "description": "The button's title for a signing in via Apple"
+  },
+  "dontHaveAccount": "Don't have an account?",
+  "@dontHaveAccount": {
+    "type": "text",
+    "description": "The question for user does not have an account"
+  },
+  "signUpVerb": "Sign up",
+  "@signUpVerb": {
+    "type": "text",
+    "description": "By another words this is a process of registration"
   },
   "enterSugarInBloodMeasure": "Please, enter the data of blood sugar (mmol/L)",
   "@enterSugarInBloodMeasure": {

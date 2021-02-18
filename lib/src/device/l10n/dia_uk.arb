@@ -1,5 +1,10 @@
 {
-  "appName": "Dia App",
+  "tagline": "Ваше здоров'я під контролем",
+  "enterWithGoogle": "Зайти за допомогою Google",
+  "or": "або",
+  "enterWithApple": "Зайти за допомогою Apple",
+  "dontHaveAccount": "Не маєте облікового запису?",
+  "signUpVerb": "Зареєструватися",
   "enterSugarInBloodMeasure": "Будь ласка, додайте показник рівня цукру в крові (ммоль/л)",
   "bloodSugarDataExample": "Приклад: 4.5",
   "errorInputData": "Будь ласка, введіть дані ...",
