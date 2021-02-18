@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 
-import 'src/app/pages/auth/login/login_page.dart';
 import 'src/app/pages/main/main_page.dart';
 
 void main() {
@@ -27,6 +26,6 @@ class MyApp extends StatelessWidget {
   }
 
   Route _onGenerateRoute(RouteSettings settings) {
-    return LoginPage.buildPageRoute();
+    return MainPage.buildPageRoute();
   }
 }
