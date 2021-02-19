@@ -67,15 +67,11 @@ class FirebaseAuthRepository extends AuthRepository {
   }
 
   Future<void> _saveUserData(User user) async {
-    try {
-      await StoreInteractor.setToken(user.uid);
-      await  DiaFirestoreHelper.saveUserData(
-        await StoreInteractor.getToken(),
-        user.displayName,
-        user.email,
-      );
-    } catch (e) {
-      rethrow;
-    }
+    await StoreInteractor.setToken(user.uid);
+    await DiaFirestoreHelper.saveUserData(
+      await StoreInteractor.getToken(),
+      user.displayName,
+      user.email,
+    );
   }
 }

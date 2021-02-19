@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:dia_app/src/domain/entities/statistic.dart';
-import 'package:dia_app/src/domain/entities/user.dart';
-
 const String USERS = 'users';
 const String NAME = 'name';
 const String EMAIL = 'email';
@@ -19,7 +16,7 @@ class DiaFirestoreHelper {
     String name,
     String email,
   ) async {
-    final userDoc = _getUserDoc(userId);
+    final userDoc = _getUserDocRef(userId);
     final userData = await userDoc.get();
     if (!userData.exists) {
       await userDoc.set({NAME: name, EMAIL: email});
@@ -31,26 +28,39 @@ class DiaFirestoreHelper {
     String name,
     String docEmail,
   ) async {
-    await _getUserDoc(userId).set({NAME: name, DOC_EMAIL: docEmail});
+    await _getUserDocRef(userId).set({NAME: name, DOC_EMAIL: docEmail});
+  }
+
+  static Future<Map<String, dynamic>> fetchUserData(String userId) async {
+    final snapshot = await _getUserDocRef(userId).get();
+    return snapshot.data();
+  }
+
+  static Future<List<QueryDocumentSnapshot>> fetchBloodSugarStatistic(
+    String userId,
+  ) async {
+    final snapshot = await _getBloodSugarStatsCollectionRef(userId).get();
+    return snapshot.docs;
   }
 
   static Future<void> setBloodSugarData(
     String userId,
-    BloodSugarStatistic data,
+    DateTime time,
+    double bloodSugar,
   ) async {
-    final statisticDoc = _getBloodSugarStatsCollection(userId)
-        .doc('${data.dateTimeOfMeasure.millisecondsSinceEpoch}');
+    final statisticDoc = _getBloodSugarStatsCollectionRef(userId)
+        .doc('${time.millisecondsSinceEpoch}');
     await statisticDoc.set({
-      TIME_OF_MEASURE: Timestamp.fromDate(data.dateTimeOfMeasure),
-      BLOOD_SUGAR: data.bloodSugar,
+      TIME_OF_MEASURE: Timestamp.fromDate(time),
+      BLOOD_SUGAR: bloodSugar,
     });
   }
 
-  static DocumentReference _getUserDoc(String userId) {
+  static DocumentReference _getUserDocRef(String userId) {
     return _firestore.collection(USERS).doc(userId);
   }
 
-  static CollectionReference _getBloodSugarStatsCollection(String userId) {
-    return _getUserDoc(userId).collection(BLOOD_SUGAR_STATISTIC);
+  static CollectionReference _getBloodSugarStatsCollectionRef(String userId) {
+    return _getUserDocRef(userId).collection(BLOOD_SUGAR_STATISTIC);
   }
 }
