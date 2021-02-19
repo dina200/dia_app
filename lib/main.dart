@@ -5,11 +5,11 @@ import 'package:get_it/get_it.dart';
 
 import 'src/app/pages/login/login_page.dart';
 import 'src/app/pages/main/main_page.dart';
-import 'src/data/firebase_repositories/dia_firestore_helper.dart';
 import 'src/data/firebase_repositories/firebase_auth_repository.dart';
+import 'src/data/firebase_repositories/firebase_user_repository.dart';
 import 'src/device/utils/google_service.dart';
-import 'src/device/utils/store_interactor.dart';
 import 'src/domain/repositories_contracts/auth_repository.dart';
+import 'src/domain/repositories_contracts/user_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +17,8 @@ Future<void> main() async {
 
   GetIt.I
     ..registerSingleton<GoogleService>(GoogleService())
-    ..registerSingleton<StoreInteractor>(StoreInteractor())
-    ..registerSingleton<DiaFirestoreHelper>(DiaFirestoreHelper())
-    ..registerSingleton<AuthRepository>(FirebaseAuthRepository());
+    ..registerSingleton<AuthRepository>(FirebaseAuthRepository())
+    ..registerSingleton<UserRepository>(FirebaseUserRepository());
 
   final isLoggedIn = await GetIt.I<AuthRepository>().isLoggedIn;
   runApp(MyApp(isLoggedIn: isLoggedIn));

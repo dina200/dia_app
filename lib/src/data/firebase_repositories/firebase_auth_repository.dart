@@ -9,20 +9,16 @@ import 'dia_firestore_helper.dart';
 
 class FirebaseAuthRepository extends AuthRepository {
   final FirebaseAuth _firebaseAuth;
-  final DiaFirestoreHelper _helper;
-  final StoreInteractor _storeInteractor;
   final GoogleService _googleService;
 
   FirebaseAuthRepository()
       : _firebaseAuth = FirebaseAuth.instance,
-        _helper = GetIt.I<DiaFirestoreHelper>(),
-        _storeInteractor = GetIt.I<StoreInteractor>(),
         _googleService = GetIt.I<GoogleService>();
 
   @override
   Future<bool> get isLoggedIn async {
     final currentUser = _firebaseAuth.currentUser;
-    final token = await _storeInteractor.getToken();
+    final token = await StoreInteractor.getToken();
     return currentUser != null && token != null;
   }
 
@@ -67,14 +63,14 @@ class FirebaseAuthRepository extends AuthRepository {
   Future<bool> logOut() async {
     await _firebaseAuth.signOut();
     await _googleService.signOut();
-    return await _storeInteractor.removeToken();
+    return await StoreInteractor.removeToken();
   }
 
   Future<void> _saveUserData(User user) async {
     try {
-      await _storeInteractor.setToken(user.uid);
-      await  _helper.saveUserData(
-        await _storeInteractor.getToken(),
+      await StoreInteractor.setToken(user.uid);
+      await  DiaFirestoreHelper.saveUserData(
+        await StoreInteractor.getToken(),
         user.displayName,
         user.email,
       );
