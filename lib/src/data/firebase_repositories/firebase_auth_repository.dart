@@ -5,13 +5,17 @@ import 'package:dia_app/src/device/utils/google_service.dart';
 import 'package:dia_app/src/device/utils/store_interactor.dart';
 import 'package:dia_app/src/domain/repositories_contracts/auth_repository.dart';
 
+import 'dia_firestore_helper.dart';
+
 class FirebaseAuthRepository extends AuthRepository {
   final FirebaseAuth _firebaseAuth;
+  final DiaFirestoreHelper _helper;
   final StoreInteractor _storeInteractor;
   final GoogleService _googleService;
 
   FirebaseAuthRepository()
       : _firebaseAuth = FirebaseAuth.instance,
+        _helper = GetIt.I<DiaFirestoreHelper>(),
         _storeInteractor = GetIt.I<StoreInteractor>(),
         _googleService = GetIt.I<GoogleService>();
 
@@ -30,7 +34,7 @@ class FirebaseAuthRepository extends AuthRepository {
         email: 'asd@asd.asd',
         password: 'asdasd',
       );
-      await _storeInteractor.setToken(authResult.user.uid);
+      await _saveUserData(authResult.user);
     } catch (e) {
       //TODO: handle exception
       rethrow;
@@ -46,7 +50,7 @@ class FirebaseAuthRepository extends AuthRepository {
         accessToken: googleAuthentication.accessToken,
       );
       final authResult = await _firebaseAuth.signInWithCredential(credential);
-      await _storeInteractor.setToken(authResult.user.uid);
+      await _saveUserData(authResult.user);
     } catch (e) {
       //TODO: handle exception
       rethrow;
@@ -64,5 +68,18 @@ class FirebaseAuthRepository extends AuthRepository {
     await _firebaseAuth.signOut();
     await _googleService.signOut();
     return await _storeInteractor.removeToken();
+  }
+
+  Future<void> _saveUserData(User user) async {
+    try {
+      await _storeInteractor.setToken(user.uid);
+      await  _helper.saveUserData(
+        await _storeInteractor.getToken(),
+        user.displayName,
+        user.email,
+      );
+    } catch (e) {
+      rethrow;
+    }
   }
 }

@@ -8,7 +8,8 @@ import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 abstract class Statistic {
   final DateTime dateTimeOfMeasure;
 
-  Statistic(this.dateTimeOfMeasure) : assert(dateTimeOfMeasure != null);
+  Statistic({DateTime dateTimeOfMeasure})
+      : dateTimeOfMeasure = dateTimeOfMeasure ?? DateTime.now();
 
   int compareTo(Statistic anotherStatistic) {
     if (dateTimeOfMeasure.isAfter(anotherStatistic.dateTimeOfMeasure))  return -1;
@@ -31,10 +32,10 @@ class BloodSugarStatistic extends Statistic {
   final double bloodSugar;
 
   BloodSugarStatistic({
-    @required DateTime dateTimeOfMeasure,
     @required this.bloodSugar,
+    DateTime dateTimeOfMeasure,
   })  : assert(bloodSugar != null),
-        super(dateTimeOfMeasure);
+        super(dateTimeOfMeasure: dateTimeOfMeasure);
 
   BloodSugarDiagnosis get diagnosis {
     if (bloodSugar < 4.1) {
