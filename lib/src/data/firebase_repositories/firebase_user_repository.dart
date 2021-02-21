@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:dia_app/src/device/utils/store_interactor.dart';
 import 'package:dia_app/src/domain/entities/statistic.dart';
+import 'package:dia_app/src/domain/entities/time_range.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 
@@ -47,10 +48,18 @@ class FirebaseUserRepository extends UserRepository {
     }
   }
 
-  Future<List<BloodSugarStatistic>> fetchBloodSugarStatistic() async {
+  Future<List<BloodSugarStatistic>> fetchBloodSugarStatistic([
+    TimeRange timeRange,
+  ]) async {
+    if (timeRange == null) {
+      timeRange = TimeRange.getEntityByFilter(TimeRangeFilters.wholeTime);
+    }
     try {
-      final data =
-          await DiaFirestoreHelper.fetchBloodSugarStatistic(await _token);
+      final data = await DiaFirestoreHelper.fetchBloodSugarStatistic(
+        await _token,
+        timeRange.from,
+        timeRange.to,
+      );
       return await compute(_parseStatistic, data);
     } catch (e) {
       //TODO: handle exception

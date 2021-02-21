@@ -4,9 +4,12 @@ const String USERS = 'users';
 const String NAME = 'name';
 const String EMAIL = 'email';
 const String DOC_EMAIL = 'docEmail';
-const String BLOOD_SUGAR_STATISTIC = 'bloodSugarStatistic';
-const String TIME_OF_MEASURE = 'timeOfMeasure';
-const String BLOOD_SUGAR = 'bloodSugar';
+// const String BLOOD_SUGAR_STATISTIC = 'bloodSugarStatistic';
+const String BLOOD_SUGAR_STATISTIC = 'statistica';
+// const String TIME_OF_MEASURE = 'timeOfMeasure';
+const String TIME_OF_MEASURE = 'timeMeasure';
+// const String BLOOD_SUGAR = 'bloodSugar';
+const String BLOOD_SUGAR = 'sugarInBlood';
 
 class DiaFirestoreHelper {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -38,8 +41,19 @@ class DiaFirestoreHelper {
 
   static Future<List<QueryDocumentSnapshot>> fetchBloodSugarStatistic(
     String userId,
+    DateTime from,
+    DateTime to,
   ) async {
-    final snapshot = await _getBloodSugarStatsCollectionRef(userId).get();
+    final snapshot = await _getBloodSugarStatsCollectionRef(userId)
+        .where(
+          TIME_OF_MEASURE,
+          // isGreaterThanOrEqualTo: Timestamp.fromDate(from),
+          // isLessThanOrEqualTo: Timestamp.fromDate(to),
+          isGreaterThanOrEqualTo: from.millisecondsSinceEpoch,
+          isLessThanOrEqualTo: to.millisecondsSinceEpoch,
+        )
+        .orderBy(TIME_OF_MEASURE, descending: true)
+        .get();
     return snapshot.docs;
   }
 

@@ -12,6 +12,7 @@ class _LoginButtons extends StatelessWidget {
           //TODO: only for test - required to remove
           RaisedButton(
             child: Text('SIGN IN WITH TEST ACCOUNT'),
+            color: Colors.red,
             onPressed: _loginWithTestAccount,
           ),
           SizedBox(height: 16.0),
