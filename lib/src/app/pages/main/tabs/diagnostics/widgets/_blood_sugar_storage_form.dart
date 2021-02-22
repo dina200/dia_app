@@ -11,6 +11,7 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
 
   ThemeData get _theme => Theme.of(context);
   DiaLocalizations get _locale => DiaLocalizations.of(context);
+  MainPagePresenter get _read => context.read<MainPagePresenter>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +62,13 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
     return null;
   }
 
-  void _onSendNewDataPressed() {
-    //TODO: save data to backend
+  Future<void> _onSendNewDataPressed() async {
     if (_formKey.currentState.validate()) {
       final sugarBloodStatistic = BloodSugarStatistic(
         dateTimeOfMeasure: DateTime.now(),
         bloodSugar: double.tryParse(_sugarInBloodKey.currentState.value),
       );
+      await _read.saveBloodSugarData(_sugarInBloodKey.currentState.value);
       _showSnackBar(
         Text(
           '${_locale.dataSaved}: ${sugarBloodStatistic.getFullData(_locale)}',

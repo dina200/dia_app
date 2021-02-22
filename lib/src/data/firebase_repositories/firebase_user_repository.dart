@@ -77,8 +77,7 @@ FutureOr<List<BloodSugarStatistic>> _parseStatistic(
   return data.map((s) {
     return BloodSugarStatistic(
       bloodSugar: s[BLOOD_SUGAR],
-      // dateTimeOfMeasure: (s[TIME_OF_MEASURE] as Timestamp).toDate(),
-      dateTimeOfMeasure: DateTime.fromMillisecondsSinceEpoch(s[TIME_OF_MEASURE]),
+      dateTimeOfMeasure: (s[TIME_OF_MEASURE] as Timestamp).toDate(),
     );
   }).toList();
 }

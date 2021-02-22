@@ -200,5 +200,10 @@
   "@referenceInfoAboutBloodSugar": {
     "type": "text",
     "description": "The reference information about blood sugar levels"
+  },
+  "bloodSugarStatistic": "The patient's blood sugar statistic",
+  "@bloodSugarStatistic": {
+    "type": "text",
+    "description": "The subject of email for doctor"
   }
 }

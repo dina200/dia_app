@@ -26,6 +26,10 @@ abstract class Statistic {
   String getDate(DiaLocalizations locale) {
     return DateFormat.yMd(locale.localeName).format(dateTimeOfMeasure);
   }
+
+  String getSimpleDateTime() {
+    return DateFormat('dd.MM HH:mm').format(dateTimeOfMeasure);
+  }
 }
 
 class BloodSugarStatistic extends Statistic {
@@ -75,6 +79,10 @@ class BloodSugarStatistic extends Statistic {
       case BloodSugarDiagnosis.normal: return Color(0xFFCAFFBF);
       default: return Color(0xFFFFFFFF);
     }
+  }
+
+  String getBriefInfo(DiaLocalizations locale) {
+    return '${super.getSimpleDateTime()}, ${getBloodSugar(locale)}';
   }
 }
 

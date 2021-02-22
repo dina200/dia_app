@@ -59,11 +59,11 @@ class _TimeRangeFilterTileState extends State<TimeRangeFilterTile> {
       ),
       _TimeRangeFilterPayload(
         name: _locale.last7days,
-        filter: TimeRangeFilters.week,
+        filter: TimeRangeFilters.last7Days,
       ),
       _TimeRangeFilterPayload(
         name: _locale.last30days,
-        filter: TimeRangeFilters.thisMonth,
+        filter: TimeRangeFilters.last30Days,
       ),
       _TimeRangeFilterPayload(
         name: _locale.year,

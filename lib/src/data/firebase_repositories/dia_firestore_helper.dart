@@ -4,12 +4,9 @@ const String USERS = 'users';
 const String NAME = 'name';
 const String EMAIL = 'email';
 const String DOC_EMAIL = 'docEmail';
-// const String BLOOD_SUGAR_STATISTIC = 'bloodSugarStatistic';
-const String BLOOD_SUGAR_STATISTIC = 'statistica';
-// const String TIME_OF_MEASURE = 'timeOfMeasure';
-const String TIME_OF_MEASURE = 'timeMeasure';
-// const String BLOOD_SUGAR = 'bloodSugar';
-const String BLOOD_SUGAR = 'sugarInBlood';
+const String BLOOD_SUGAR_STATISTIC = 'bloodSugarStatistic';
+const String TIME_OF_MEASURE = 'timeOfMeasure';
+const String BLOOD_SUGAR = 'bloodSugar';
 
 class DiaFirestoreHelper {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -47,10 +44,8 @@ class DiaFirestoreHelper {
     final snapshot = await _getBloodSugarStatsCollectionRef(userId)
         .where(
           TIME_OF_MEASURE,
-          // isGreaterThanOrEqualTo: Timestamp.fromDate(from),
-          // isLessThanOrEqualTo: Timestamp.fromDate(to),
-          isGreaterThanOrEqualTo: from.millisecondsSinceEpoch,
-          isLessThanOrEqualTo: to.millisecondsSinceEpoch,
+          isGreaterThan: Timestamp.fromDate(from),
+          isLessThan: Timestamp.fromDate(to),
         )
         .orderBy(TIME_OF_MEASURE, descending: true)
         .get();

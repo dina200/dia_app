@@ -7,8 +7,8 @@ class TimeRange {
   factory TimeRange.getEntityByFilter(TimeRangeFilters filter) {
     switch (filter) {
       case TimeRangeFilters.today: return TimeRange._getRangeForToday();
-      case TimeRangeFilters.week: return TimeRange._getRangeForWeek();
-      case TimeRangeFilters.thisMonth: return TimeRange._getRangeForMonth();
+      case TimeRangeFilters.last7Days: return TimeRange._getRangeForLast7Days();
+      case TimeRangeFilters.last30Days: return TimeRange._getRangeForLast30Days();
       case TimeRangeFilters.thisYear: return TimeRange._getRangeForThisYear();
       case TimeRangeFilters.wholeTime: return TimeRange._getWholeRange();
     }
@@ -27,17 +27,17 @@ class TimeRange {
     return TimeRange._getRangeForDay(_now);
   }
 
-  factory TimeRange._getRangeForWeek() {
+  factory TimeRange._getRangeForLast7Days() {
     final today = DateTime(_now.year, _now.month, _now.day + 1);
     return TimeRange._(
-      today.subtract(Duration(days: Duration.hoursPerDay * 7)),
+      today.subtract(Duration(hours: Duration.hoursPerDay * 7)),
       today,
     );
   }
 
-  factory TimeRange._getRangeForMonth() {
+  factory TimeRange._getRangeForLast30Days() {
     return TimeRange._(
-      DateTime(_now.year, _now.month).subtract(Duration(days: 30)),
+      _now.subtract(Duration(days: 30)),
       _now,
     );
   }
@@ -61,8 +61,8 @@ class TimeRange {
 
 enum TimeRangeFilters {
   today,
-  week,
-  thisMonth,
+  last7Days,
+  last30Days,
   thisYear,
   wholeTime,
 }

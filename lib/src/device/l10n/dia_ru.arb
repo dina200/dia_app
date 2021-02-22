@@ -36,5 +36,6 @@
   "sendDataToDoc": "Отправить статистику врачу",
   "minMaxBloodSugar": "Мин.: {min}, Макс.: {max}",
   "diagnosisData": "Ваш средний показатель сахара в крови {averageBloodSugar} ммоль/л.",
-  "referenceInfoAboutBloodSugar": "Норма от 4,1 до 5,9."
+  "referenceInfoAboutBloodSugar": "Норма от 4,1 до 5,9.",
+  "bloodSugarStatistic": "Статистика уровня сахара в крови пациента"
 }
