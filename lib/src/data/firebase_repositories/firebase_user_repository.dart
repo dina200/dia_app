@@ -73,10 +73,12 @@ class FirebaseUserRepository extends UserRepository {
 FutureOr<List<BloodSugarStatistic>> _parseStatistic(
   List<QueryDocumentSnapshot> data,
 ) {
-  return data
-      .map((s) => BloodSugarStatistic(
-            bloodSugar: s[BLOOD_SUGAR],
-            dateTimeOfMeasure: s[TIME_OF_MEASURE],
-          ))
-      .toList();
+  //TODO: remove old data
+  return data.map((s) {
+    return BloodSugarStatistic(
+      bloodSugar: s[BLOOD_SUGAR],
+      // dateTimeOfMeasure: (s[TIME_OF_MEASURE] as Timestamp).toDate(),
+      dateTimeOfMeasure: DateTime.fromMillisecondsSinceEpoch(s[TIME_OF_MEASURE]),
+    );
+  }).toList();
 }

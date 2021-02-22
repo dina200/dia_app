@@ -3,8 +3,11 @@ part of '../statistics_tab.dart';
 class _StatisticsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final watch = context.watch<MainPagePresenter>();
+    final statistic = watch.bloodSugarStatistic ?? [];
+
     return ListView.separated(
-      itemCount: mockStatisticList.length + 1,
+      itemCount: statistic.length + 1,
       separatorBuilder: (context, i) => SizedBox(height: 1.0),
       itemBuilder: _itemBuilder,
     );
@@ -12,11 +15,14 @@ class _StatisticsList extends StatelessWidget {
 
   Widget _itemBuilder(BuildContext context, int index) {
     final locale = DiaLocalizations.of(context);
+    final read = context.read<MainPagePresenter>();
+    final statistic = read.bloodSugarStatistic ?? [];
 
-    if(index == mockStatisticList.length) {
+    if(index == statistic.length) {
       return SizedBox(height: 72.0);
     }
-    final item = mockStatisticList[index];
+
+    final item = statistic[index];
     return Material(
       color: item.color,
       child: ListTile(

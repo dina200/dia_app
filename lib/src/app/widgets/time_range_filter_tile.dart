@@ -11,10 +11,9 @@ class TimeRangeFilterTile extends StatefulWidget {
 
   const TimeRangeFilterTile({
     Key key,
-    TimeRangeFilters initialValue,
+    @required this.initialValue,
     @required this.onSort,
-  })  : this.initialValue = initialValue ?? TimeRangeFilters.today,
-        assert(onSort != null),
+  })  : assert(onSort != null),
         super(key: key);
 
   @override
@@ -23,6 +22,7 @@ class TimeRangeFilterTile extends StatefulWidget {
 
 class _TimeRangeFilterTileState extends State<TimeRangeFilterTile> {
   TimeRangeFilters _currentFilter;
+
   DiaLocalizations get _locale => DiaLocalizations.of(context);
 
   @override
@@ -38,8 +38,8 @@ class _TimeRangeFilterTileState extends State<TimeRangeFilterTile> {
         value: _currentFilter,
         onChanged: _changeFilter,
         items: _timeRangeFiltersPayloads
-          .map<DropdownMenuItem<TimeRangeFilters>>(_buildDropdownMenuItem)
-          .toList(),
+            .map<DropdownMenuItem<TimeRangeFilters>>(_buildDropdownMenuItem)
+            .toList(),
       ),
     );
   }
@@ -53,15 +53,32 @@ class _TimeRangeFilterTileState extends State<TimeRangeFilterTile> {
 
   List<_TimeRangeFilterPayload> get _timeRangeFiltersPayloads {
     return [
-      _TimeRangeFilterPayload(name: _locale.today, filter: TimeRangeFilters.today),
-      _TimeRangeFilterPayload(name: _locale.last7days, filter: TimeRangeFilters.week),
-      _TimeRangeFilterPayload(name: _locale.last30days, filter: TimeRangeFilters.thisMonth),
-      _TimeRangeFilterPayload(name: _locale.year, filter: TimeRangeFilters.thisYear),
-      _TimeRangeFilterPayload(name: _locale.wholeTime, filter: TimeRangeFilters.wholeTime),
+      _TimeRangeFilterPayload(
+        name: _locale.today,
+        filter: TimeRangeFilters.today,
+      ),
+      _TimeRangeFilterPayload(
+        name: _locale.last7days,
+        filter: TimeRangeFilters.week,
+      ),
+      _TimeRangeFilterPayload(
+        name: _locale.last30days,
+        filter: TimeRangeFilters.thisMonth,
+      ),
+      _TimeRangeFilterPayload(
+        name: _locale.year,
+        filter: TimeRangeFilters.thisYear,
+      ),
+      _TimeRangeFilterPayload(
+        name: _locale.wholeTime,
+        filter: TimeRangeFilters.wholeTime,
+      ),
     ];
   }
 
-  DropdownMenuItem<TimeRangeFilters> _buildDropdownMenuItem(_TimeRangeFilterPayload value) {
+  DropdownMenuItem<TimeRangeFilters> _buildDropdownMenuItem(
+    _TimeRangeFilterPayload value,
+  ) {
     return DropdownMenuItem<TimeRangeFilters>(
       value: value.filter,
       child: Text(value.name),
