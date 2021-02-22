@@ -19,7 +19,7 @@ class StatisticsTab extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           TimeRangeFilterTile(
-            initialValue: watch.timeRangeFilter,
+            value: watch.timeRangeFilter,
             onSort: (filter) => _onSort(context, filter),
           ),
           Expanded(child: _StatisticsList())

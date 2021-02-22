@@ -205,5 +205,10 @@
   "@bloodSugarStatistic": {
     "type": "text",
     "description": "The subject of email for doctor"
+  },
+  "noData": "There is no data yet",
+  "@noData": {
+    "type": "text",
+    "description": "The placeholder for chart"
   }
 }

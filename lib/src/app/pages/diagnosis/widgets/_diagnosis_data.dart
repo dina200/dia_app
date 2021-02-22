@@ -1,22 +1,17 @@
 part of '../diagnosis_page.dart';
 
 class _DiagnosisData extends StatelessWidget {
-  final averageBloodSugar = getAverageBloodSugarStatistic();
-
   @override
   Widget build(BuildContext context) {
     final locale = DiaLocalizations.of(context);
-
-    final min = getMinBloodSugarValue();
-    final max = getMaxBloodSugarValue();
-    final bloodSugar = averageBloodSugar.bloodSugar.toStringAsFixed(2);
+    final watch = context.watch<DiagnosisPagePresenter>();
 
     return Column(
       children: [
-        Text(locale.minMaxBloodSugar(min, max)),
+        Text(locale.minMaxBloodSugar(watch.min, watch.max)),
         SizedBox(height: 32.0),
         Text(
-          locale.diagnosisData(bloodSugar),
+          locale.diagnosisData(watch.average),
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 18.0),
         ),

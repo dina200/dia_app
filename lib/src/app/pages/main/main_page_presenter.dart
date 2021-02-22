@@ -32,7 +32,7 @@ class MainPagePresenter with ChangeNotifier {
   bool get isLogOutLoading => _isLogOutLoading;
   bool get isSavingData => _isSavingData;
   bool get isStatisticLoading => _isStatisticLoading;
-  bool get isStatisticIsNotEmpty =>
+  bool get isStatisticNotEmpty =>
       _bloodSugarStatistic != null && _bloodSugarStatistic.isNotEmpty;
 
   MainPagePresenter(this._context)

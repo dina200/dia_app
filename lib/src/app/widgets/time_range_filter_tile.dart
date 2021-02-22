@@ -6,12 +6,12 @@ import 'package:dia_app/src/domain/entities/time_range.dart';
 typedef SortByTimeRangeCallback = void Function(TimeRangeFilters filter);
 
 class TimeRangeFilterTile extends StatefulWidget {
-  final TimeRangeFilters initialValue;
+  final TimeRangeFilters value;
   final SortByTimeRangeCallback onSort;
 
   const TimeRangeFilterTile({
     Key key,
-    @required this.initialValue,
+    @required this.value,
     @required this.onSort,
   })  : assert(onSort != null),
         super(key: key);
@@ -28,7 +28,7 @@ class _TimeRangeFilterTileState extends State<TimeRangeFilterTile> {
   @override
   void initState() {
     super.initState();
-    _currentFilter = widget.initialValue;
+    _currentFilter = widget.value;
   }
 
   @override

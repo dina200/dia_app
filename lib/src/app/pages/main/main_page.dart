@@ -118,7 +118,7 @@ class _MainPageState extends State<MainPage> {
       case 2:
         return FloatingActionButton.extended(
           label: Text(_locale.sendDataToDoc),
-          onPressed: _watch.isStatisticIsNotEmpty ? _sendStatistic : null,
+          onPressed: _watch.isStatisticNotEmpty ? _sendStatistic : null,
         );
       default: return null;
     }
