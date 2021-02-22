@@ -13,12 +13,12 @@ class _LoginButtons extends StatelessWidget {
           RaisedButton(
             child: Text('SIGN IN WITH TEST ACCOUNT'),
             color: Colors.red,
-            onPressed: _loginWithTestAccount,
+            onPressed: () => _loginWithTestAccount(context),
           ),
           SizedBox(height: 16.0),
           RaisedButton(
             child: Text(locale.enterWithGoogle),
-            onPressed: _loginWithGoogle,
+            onPressed: () => _loginWithGoogle(context),
           ),
           if (Platform.isIOS)
             Column(
@@ -28,7 +28,7 @@ class _LoginButtons extends StatelessWidget {
                 SizedBox(height: 16.0),
                 RaisedButton(
                   child: Text(locale.enterWithApple),
-                  onPressed: _loginWithApple,
+                  onPressed: () => _loginWithApple(context),
                 ),
               ],
             ),
@@ -37,15 +37,23 @@ class _LoginButtons extends StatelessWidget {
     );
   }
 
-  Future<void> _loginWithTestAccount() async {
-    //TODO: implement _loginWithTestAccount
+  Future<void> _loginWithTestAccount(BuildContext context) async {
+    await _login(context, context.read<LoginPagePresenter>().loginWithEmail);
   }
 
-  Future<void> _loginWithGoogle() async {
-    //TODO: implement _loginWithGoogle
+  Future<void> _loginWithGoogle(BuildContext context) async {
+    await _login(context, context.read<LoginPagePresenter>().loginWithGoogle);
   }
 
-  Future<void> _loginWithApple() async {
-    //TODO: implement _loginWithApple
+  Future<void> _loginWithApple(BuildContext context) async {
+    await _login(context, context.read<LoginPagePresenter>().loginWithApple);
+  }
+
+  Future<void> _login(BuildContext context, Function login) async {
+    await login();
+    await Navigator.of(context).pushAndRemoveUntil(
+      MainPage.buildPageRoute(),
+      (route) => false,
+    );
   }
 }

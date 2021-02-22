@@ -2,8 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
+import 'package:provider/provider.dart';
 
 import 'package:dia_app/src/app/routes.dart' as routes;
+import 'package:dia_app/src/app/pages/main/main_page.dart';
+import 'package:dia_app/src/app/widgets/loading_layout.dart';
+
+import 'login_page_presenter.dart';
 
 part 'widgets/_login_buttons.dart';
 
@@ -18,19 +23,26 @@ class LoginPage extends StatelessWidget {
   }
 
   static Widget _builder(BuildContext context) {
-    return LoginPage();
+    return ChangeNotifierProvider(
+      create: (context) => LoginPagePresenter(),
+      child: LoginPage(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Expanded(child: _buildTitle()),
-          Expanded(child: _LoginButtons()),
-          Expanded(child: SizedBox())
-        ],
+    final watch = context.watch<LoginPagePresenter>();
+    return LoadingLayout(
+      isLoading: watch.isLoginProcess,
+      child: Scaffold(
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Expanded(child: _buildTitle()),
+            Expanded(child: _LoginButtons()),
+            Expanded(child: SizedBox())
+          ],
+        ),
       ),
     );
   }
