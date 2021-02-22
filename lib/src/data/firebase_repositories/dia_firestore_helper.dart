@@ -31,7 +31,7 @@ class DiaFirestoreHelper {
     String name,
     String docEmail,
   ) async {
-    await _getUserDocRef(userId).set({NAME: name, DOC_EMAIL: docEmail});
+    await _getUserDocRef(userId).update({NAME: name, DOC_EMAIL: docEmail});
   }
 
   static Future<Map<String, dynamic>> fetchUserData(String userId) async {
