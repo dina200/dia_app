@@ -10,18 +10,18 @@ class DiagnosisPagePresenter with ChangeNotifier {
   final UserRepository _userRepository;
 
   Map<DateTime, double> _bloodSugarStatisticSeries;
-  String _min;
-  String _max;
-  String _average;
   TimeRangeFilters _timeRangeFilter = TimeRangeFilters.wholeTime;
   bool _isStatisticLoading = false;
+  String _average;
+  String _min;
+  String _max;
 
   Map<DateTime, double> get bloodSugarStatistic => _bloodSugarStatisticSeries;
   TimeRangeFilters get timeRangeFilter => _timeRangeFilter;
   bool get isStatisticLoading => _isStatisticLoading;
+  String get average => _average ?? '...';
   String get min => _min ?? '...';
   String get max => _max ?? '...';
-  String get average => _average ?? '...';
 
   DiagnosisPagePresenter() : _userRepository = GetIt.I.get<UserRepository>(){
     init();
@@ -82,7 +82,7 @@ Map<DateTime, double> _getBloodSugarStatisticSeries(
 }
 
 String _getAverage(List<BloodSugarStatistic> list) {
-  final sum = list.fold(0, (acum, v) => acum + v.bloodSugar);
+  final sum = list.fold(0.0, (acum, v) => acum + v.bloodSugar);
   final average = sum != 0.0 ? sum / list.length : 0.0;
   return average.toStringAsFixed(2);
 }
@@ -93,7 +93,7 @@ String _getMin(List<BloodSugarStatistic> list) {
           acum = v.bloodSugar;
         }
         return acum;
-      }) ?? 0;
+      }) ?? 0.0;
   return min.toStringAsFixed(2);
 }
 

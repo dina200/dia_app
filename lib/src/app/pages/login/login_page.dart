@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:dia_app/src/app/routes.dart' as routes;
 import 'package:dia_app/src/app/pages/main/main_page.dart';
 import 'package:dia_app/src/app/widgets/loading_layout.dart';
+import 'package:dia_app/src/domain/entities/exceptions.dart';
 
 import 'login_page_presenter.dart';
 

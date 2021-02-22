@@ -13,32 +13,27 @@ class LoginPagePresenter with ChangeNotifier {
   LoginPagePresenter() : _authRepository = GetIt.I.get<AuthRepository>();
 
   Future<void> loginWithEmail() async {
-    _isLoginProcess = true;
-    notifyListeners();
-
-    await _authRepository.loginWithEmail();
-
-    _isLoginProcess = false;
-    notifyListeners();
+    await _login(_authRepository.loginWithEmail);
   }
 
   Future<void> loginWithGoogle() async {
-    _isLoginProcess = true;
-    notifyListeners();
-
-    await _authRepository.loginWithGoogle();
-
-    _isLoginProcess = false;
-    notifyListeners();
+    await _login(_authRepository.loginWithGoogle);
   }
 
   Future<void> loginWithApple() async {
+    await _login(_authRepository.loginWithApple);
+  }
+
+  Future<void> _login(Function login) async {
     _isLoginProcess = true;
     notifyListeners();
-
-    await _authRepository.loginWithApple();
-
-    _isLoginProcess = false;
-    notifyListeners();
+    try {
+      await login();
+    } catch (e) {
+      rethrow;
+    } finally {
+      _isLoginProcess = false;
+      notifyListeners();
+    }
   }
 }

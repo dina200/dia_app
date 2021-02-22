@@ -7,14 +7,15 @@ class _DiagnosisChart extends StatelessWidget {
     final locale = DiaLocalizations.of(context);
     final watch = context.watch<DiagnosisPagePresenter>();
 
-    if(watch.bloodSugarStatistic == null) {
+    final statistic = watch.bloodSugarStatistic;
+    if (statistic == null) {
       return SizedBox();
-    } else if(watch.bloodSugarStatistic.isEmpty) {
+    } else if (statistic.isEmpty || statistic.length == 1) {
       return Center(child: Text(locale.noData));
     }
 
     LineChart chart = LineChart.fromDateTimeMaps(
-      [watch.bloodSugarStatistic],
+      [statistic],
       [theme.primaryColor],
       [locale.mmolPerL],
     );

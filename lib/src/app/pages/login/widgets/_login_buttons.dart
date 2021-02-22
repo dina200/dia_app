@@ -50,10 +50,12 @@ class _LoginButtons extends StatelessWidget {
   }
 
   Future<void> _login(BuildContext context, Function login) async {
-    await login();
-    await Navigator.of(context).pushAndRemoveUntil(
-      MainPage.buildPageRoute(),
-      (route) => false,
-    );
+    try {
+      await login();
+      await Navigator.of(context).pushAndRemoveUntil(
+        MainPage.buildPageRoute(),
+        (route) => false,
+      );
+    } on GoogleLoginException {}
   }
 }
