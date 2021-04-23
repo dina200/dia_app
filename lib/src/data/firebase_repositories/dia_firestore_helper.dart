@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 const String USERS = 'users';
+const String ID = 'id';
 const String NAME = 'name';
 const String EMAIL = 'email';
 const String DOC_EMAIL = 'docEmail';
@@ -19,7 +20,7 @@ class DiaFirestoreHelper {
     final userDoc = _getUserDocRef(userId);
     final userData = await userDoc.get();
     if (!userData.exists) {
-      await userDoc.set({NAME: name, EMAIL: email});
+      await userDoc.set({ID: userId, NAME: name, EMAIL: email});
     }
   }
 

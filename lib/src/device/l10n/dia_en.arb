@@ -210,5 +210,20 @@
   "@noData": {
     "type": "text",
     "description": "The placeholder for chart"
+  },
+  "actionWithUserId": "Send the id to your doctor:",
+  "@actionWithUserId": {
+    "type": "text",
+    "description": "The info about user's id"
+  },
+  "sendId": "Send id",
+  "@sendId": {
+    "type": "text",
+    "description": "The button text 'Send id"
+  },
+  "sendIdText": "My id for DIA APP: ",
+  "@sendIdText": {
+    "type": "text",
+    "description": "The message text for doctor"
   }
 }

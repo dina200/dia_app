@@ -38,5 +38,8 @@
   "diagnosisData": "Ваш средний показатель сахара в крови {averageBloodSugar} ммоль/л.",
   "referenceInfoAboutBloodSugar": "Норма от 4,1 до 5,9.",
   "bloodSugarStatistic": "Статистика уровня сахара в крови пациента",
-  "noData": "Данных пока нет"
+  "noData": "Данных пока нет",
+  "actionWithUserId": "Отправьте этот id своему врачу:",
+  "sendId": "Отправить id",
+  "sendIdText": "Мой идентификатор для DIA APP:"
 }

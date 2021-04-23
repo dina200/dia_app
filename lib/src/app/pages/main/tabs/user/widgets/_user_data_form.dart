@@ -22,6 +22,22 @@ class _UserDataFormState extends State<_UserDataForm> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Theme.of(context).primaryColor),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            width: double.infinity,
+            child: Column(
+              children: [
+                Text(_locale.actionWithUserId),
+                SizedBox(height: 8.0),
+                SelectableText(_watch.user.id),
+                SizedBox(height: 8.0),
+                RaisedButton(child: Text(_locale.sendId), onPressed: _read.sendUserId),
+              ],
+            ),
+          ),
           Row(
             children: <Widget>[
               Expanded(child: Text(_locale.userName)),

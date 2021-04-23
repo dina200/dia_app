@@ -38,5 +38,8 @@
   "diagnosisData": "Ваш середній показник цукру в крові {averageBloodSugar} ммоль/л.",
   "referenceInfoAboutBloodSugar": "Норма від 4,1 до 5,9.",
   "bloodSugarStatistic": "Статистика рівня цукру в крові пацієнта",
-  "noData": "Даних поки немає"
+  "noData": "Даних поки немає",
+  "actionWithUserId": "Надішліть цей id своему лікареві:",
+  "sendId": "Надіслати id",
+  "sendIdText": "Мій ідентифікатор для DIA APP: "
 }

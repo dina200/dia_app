@@ -113,7 +113,13 @@ class MainPagePresenter with ChangeNotifier {
       'statistic': _bloodSugarStatistic,
     });
     await launch(
-        'mailto:${_user.docsEmail ?? ''}?subject=${locale.bloodSugarStatistic}: ${user.email}&body=$statistic');
+        'mailto:${_user.docsEmail ?? ''}?subject=${locale.bloodSugarStatistic}: ${user.fullName}&body=$statistic');
+  }
+
+  Future<void> sendUserId() async {
+    final locale = DiaLocalizations.of(_context);
+    await launch(
+      'mailto:${_user.docsEmail ?? ''}?subject=${user.fullName}&body=${locale.sendIdText} ${user.id}');
   }
 }
 

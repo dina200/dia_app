@@ -25,6 +25,7 @@ class FirebaseUserRepository extends UserRepository {
     try {
       final data = await DiaFirestoreHelper.fetchUserData(await _token);
       return User(
+        id: data[ID],
         email: data[EMAIL],
         fullName: data[NAME],
         docsEmail: data[DOC_EMAIL],
