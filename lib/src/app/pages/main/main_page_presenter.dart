@@ -90,6 +90,8 @@ class MainPagePresenter with ChangeNotifier {
 
     _isSavingData = false;
     notifyListeners();
+    await sortStatisticByTimeFilter(timeRangeFilter);
+    notifyListeners();
   }
 
   Future<void> sortStatisticByTimeFilter(TimeRangeFilters filter) async {

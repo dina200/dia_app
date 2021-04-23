@@ -74,6 +74,7 @@ class _BloodSugarStorageFormState extends State<_BloodSugarStorageForm> {
           '${_locale.dataSaved}: ${sugarBloodStatistic.getFullData(_locale)}',
         ),
       );
+      _sugarInBloodKey.currentState.didChange('');
     } else {
       _showSnackBar(
         Text(
