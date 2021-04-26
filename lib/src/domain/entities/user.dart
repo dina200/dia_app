@@ -20,7 +20,7 @@ class Patient extends User {
 }
 
 class Doctor extends User {
-  final List<String> patientIds;
+  final List patientIds;
 
   Doctor({String id, String email, String fullName, this.patientIds})
       : super (id: id, email: email, fullName: fullName);

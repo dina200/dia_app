@@ -15,8 +15,8 @@ part 'widgets/_login_buttons.dart';
 class LoginPage extends StatelessWidget {
   static const nameRoute = routes.login;
 
-  static PageRoute<LoginPage> buildPageRoute() {
-    return MaterialPageRoute<LoginPage>(
+  static PageRoute buildPageRoute() {
+    return MaterialPageRoute(
       settings: RouteSettings(name: nameRoute),
       builder: _builder,
     );

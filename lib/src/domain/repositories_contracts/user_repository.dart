@@ -18,4 +18,10 @@ abstract class UserRepository {
   Future<void> addPatient(String patientId);
 
   Future<List<Patient>> fetchPatients();
+
+  Future<Patient> fetchPatientById(String patientId);
+
+  Future<List<BloodSugarStatistic>> fetchBloodSugarStatisticByPatientId(String patientId, [
+    TimeRange timeRange,
+  ]);
 }

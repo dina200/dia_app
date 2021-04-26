@@ -15,8 +15,8 @@ import 'tabs/patient/patient_tab.dart';
 class MainPage extends StatefulWidget {
   static const nameRoute = routes.main;
 
-  static PageRoute<MainPage> buildPageRoute() {
-    return MaterialPageRoute<MainPage>(
+  static PageRoute buildPageRoute() {
+    return MaterialPageRoute(
       settings: RouteSettings(name: nameRoute),
       builder: _builder,
     );

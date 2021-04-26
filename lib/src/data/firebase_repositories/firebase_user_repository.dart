@@ -24,8 +24,13 @@ class FirebaseUserRepository extends UserRepository {
 
   @override
   Future<Patient> fetchPatient() async {
+    return await fetchPatientById(await _token);
+  }
+
+  @override
+  Future<Patient> fetchPatientById(String patientId) async {
     try {
-      final data = await DiaFirestoreHelper.fetchPatientData(await _token);
+      final data = await DiaFirestoreHelper.fetchPatientData(patientId);
       return Patient(
         id: data[ID],
         email: data[EMAIL],
@@ -54,27 +59,36 @@ class FirebaseUserRepository extends UserRepository {
   Future<List<BloodSugarStatistic>> fetchBloodSugarStatistic([
     TimeRange timeRange,
   ]) async {
-    if (timeRange == null) {
-      timeRange = TimeRange.getEntityByFilter(TimeRangeFilters.wholeTime);
-    }
-    try {
-      final data = await DiaFirestoreHelper.fetchBloodSugarStatistic(
-        await _token,
-        timeRange.from,
-        timeRange.to,
-      );
-      return await compute(_parseStatistic, data);
-    } catch (e) {
-      //TODO: handle exception
-      rethrow;
-    }
+    return await fetchBloodSugarStatisticByPatientId(await _token, timeRange);
   }
+  Future<List<BloodSugarStatistic>> fetchBloodSugarStatisticByPatientId(String patientId, [
+      TimeRange timeRange,
+    ]) async {
+      if (timeRange == null) {
+        timeRange = TimeRange.getEntityByFilter(TimeRangeFilters.wholeTime);
+      }
+      try {
+        final data = await DiaFirestoreHelper.fetchBloodSugarStatistic(
+          patientId,
+          timeRange.from,
+          timeRange.to,
+        );
+        return await compute(_parseStatistic, data);
+      } catch (e) {
+        //TODO: handle exception
+        rethrow;
+      }
+    }
 
   Future<String> get _token async => await StoreInteractor.getToken();
 
   @override
   Future<void> addPatient(String patientId) async {
     try {
+      final data = await DiaFirestoreHelper.fetchPatientData(patientId);
+      if(data == null) {
+        throw AssertionError();
+      }
       await DiaFirestoreHelper.addPatient(await _token, patientId);
     } catch (e) {
       //TODO: handle exception
@@ -104,13 +118,7 @@ class FirebaseUserRepository extends UserRepository {
       if (doctor.patientIds != null) {
         final mappedList = doctor.patientIds.map(
           (id) async {
-            final data = await DiaFirestoreHelper.fetchPatientData(id);
-            return Patient(
-              id: data[ID],
-              email: data[EMAIL],
-              fullName: data[NAME],
-              docsEmail: data[DOC_EMAIL],
-            );
+            return await fetchPatientById(id);
           },
         );
         return await Future.wait(mappedList);

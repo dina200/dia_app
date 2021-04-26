@@ -16,8 +16,8 @@ part 'widgets/_diagnosis_data.dart';
 class DiagnosisPage extends StatelessWidget {
   static const nameRoute = routes.diagnosis;
 
-  static PageRoute<DiagnosisPage> buildPageRoute() {
-    return MaterialPageRoute<DiagnosisPage>(
+  static PageRoute buildPageRoute() {
+    return MaterialPageRoute(
       settings: RouteSettings(name: nameRoute),
       builder: _builder,
     );

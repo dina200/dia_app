@@ -23,6 +23,7 @@
   "dataNotSaved": "Данные не сохранены",
   "dataSaved": "Данные сохранены",
   "userName": "Имя пользователя",
+  "doctorName": "Имя врача",
   "userNameExample": "Пример: Иван Иванов",
   "docEmail": "Электронная почта доктора",
   "docEmailExample": "Пример: doc@mail.com",
@@ -44,5 +45,7 @@
   "sendId": "Отправить id",
   "sendIdText": "Мой идентификатор для DIA APP:",
   "patients": "Пациенты",
-  "doctor": "Доктор"
+  "doctor": "Доктор",
+  "enterPatientId": "Введите id пациента",
+  "addPatient": "Добавить пациента"
 }

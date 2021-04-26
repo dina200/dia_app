@@ -23,8 +23,9 @@
   "dataNotSaved": "Дані не збережено",
   "dataSaved": "Дані збережено",
   "userName": "Ім'я користувача",
+  "doctorName": "Ім'я лікаря",
   "userNameExample": "Приклад: Іван Іванов",
-  "docEmail": "Електронна пошта доктора",
+  "docEmail": "Електронна пошта лікаря",
   "docEmailExample": "Приклад: doc@mail.com",
   "invalidEmailFormat": "Невірний формат електронної пошти",
   "save": "Зберегти",
@@ -44,5 +45,7 @@
   "sendId": "Надіслати id",
   "sendIdText": "Мій ідентифікатор для DIA APP:",
   "patients": "Пацієнти",
-  "doctor": "Лікар"
+  "doctor": "Лікар",
+  "enterPatientId": "Введіть id пацієнта",
+  "addPatient": "Додати пацієнта"
 }

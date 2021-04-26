@@ -12,8 +12,8 @@ import 'package:dia_app/src/app/routes.dart' as routes;
 class MainDoctorPage extends StatefulWidget {
   static const nameRoute = routes.mainDoctor;
 
-  static PageRoute<MainDoctorPage> buildPageRoute() {
-    return MaterialPageRoute<MainDoctorPage>(
+  static PageRoute buildPageRoute() {
+    return MaterialPageRoute(
       settings: RouteSettings(name: nameRoute),
       builder: _builder,
     );
@@ -62,7 +62,6 @@ class _MainDoctorPageState extends State<MainDoctorPage> {
             ],
           ),
           body: _tabBuilder(),
-          floatingActionButton: _buildFloatActionButton(),
         ),
       ),
     );
@@ -101,17 +100,6 @@ class _MainDoctorPageState extends State<MainDoctorPage> {
       case 0: return DoctorTab();
       case 1: return PatientsTab();
       default: return Container();
-    }
-  }
-
-  Widget _buildFloatActionButton() {
-    switch (_selectedIndex) {
-      case 1:
-        return FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {},
-        );
-      default: return null;
     }
   }
 }

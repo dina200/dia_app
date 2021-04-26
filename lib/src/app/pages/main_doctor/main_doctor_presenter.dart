@@ -44,6 +44,17 @@ class MainDoctorPagePresenter with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> addPatient(String patientId) async {
+    _isPatientsLoading = true;
+    notifyListeners();
+
+    await _userRepository.addPatient(patientId);
+    _patients = await _userRepository.fetchPatients();
+
+    _isPatientsLoading = false;
+    notifyListeners();
+  }
+
   Future<void> logOut() async {
     _isLogOutLoading = true;
     notifyListeners();

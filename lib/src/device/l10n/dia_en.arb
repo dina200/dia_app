@@ -124,6 +124,11 @@
     "type": "text",
     "description": "The name of user's name field"
   },
+  "doctorName": "Doctor's name",
+  "@doctorName": {
+    "type": "text",
+    "description": "The name of doctor's name field"
+  },
   "userNameExample": "The example: Ivan Ivanov",
   "@userNameExample": {
     "type": "text",
@@ -240,5 +245,15 @@
   "@doctor": {
     "type": "text",
     "description": "Doctor's item"
+  },
+  "enterPatientId": "Enter patient id",
+  "@enterPatientId": {
+    "type": "text",
+    "description": "Field's hint - enterPatientId"
+  },
+  "addPatient": "Add patient",
+  "@addPatient": {
+    "type": "text",
+    "description": "Button name"
   }
 }
