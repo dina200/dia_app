@@ -42,5 +42,7 @@
   "noData": "Данных пока нет",
   "actionWithUserId": "Отправьте этот id своему врачу:",
   "sendId": "Отправить id",
-  "sendIdText": "Мой идентификатор для DIA APP:"
+  "sendIdText": "Мой идентификатор для DIA APP:",
+  "patients": "Пациенты",
+  "doctor": "Доктор"
 }

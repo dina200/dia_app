@@ -30,7 +30,7 @@ class _LoginButtons extends StatelessWidget {
   }
 
   Future<void> _loginWithGoogleAsDoctor(BuildContext context) async {
-    await _login(context, context.read<LoginPagePresenter>().loginWithGoogleAsDoctor);
+    await _loginAsDoctor(context, context.read<LoginPagePresenter>().loginWithGoogleAsDoctor);
   }
 
   Future<void> _login(BuildContext context, Function login) async {
@@ -38,6 +38,16 @@ class _LoginButtons extends StatelessWidget {
       await login();
       await Navigator.of(context).pushAndRemoveUntil(
         MainPage.buildPageRoute(),
+        (route) => false,
+      );
+    } on GoogleLoginException {}
+  } 
+  
+  Future<void> _loginAsDoctor(BuildContext context, Function login) async {
+    try {
+      await login();
+      await Navigator.of(context).pushAndRemoveUntil(
+        MainDoctorPage.buildPageRoute(),
         (route) => false,
       );
     } on GoogleLoginException {}

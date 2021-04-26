@@ -47,7 +47,7 @@ class MainPagePresenter with ChangeNotifier {
     notifyListeners();
 
     final results = await Future.wait([
-      _userRepository.fetchUser(),
+      _userRepository.fetchPatient(),
       _userRepository.fetchBloodSugarStatistic(),
     ]);
 
@@ -63,8 +63,8 @@ class MainPagePresenter with ChangeNotifier {
     _isPatientLoading = true;
     notifyListeners();
 
-    await _userRepository.changeUserData(name, docEmail);
-    _patient = await _userRepository.fetchUser();
+    await _userRepository.changePatientData(name, docEmail);
+    _patient = await _userRepository.fetchPatient();
 
     _isPatientLoading = false;
     notifyListeners();

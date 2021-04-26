@@ -23,6 +23,14 @@ class FirebaseAuthRepository extends AuthRepository {
   }
 
   @override
+  Future<int> get role async {
+    if (await isLoggedIn) {
+      return await StoreInteractor.getRole();
+    }
+    return null;
+  }
+
+  @override
   Future<void> loginWithGoogle() async {
     try {
       final googleAuthentication = await _googleService.getGoogleAuthData();
@@ -58,11 +66,13 @@ class FirebaseAuthRepository extends AuthRepository {
   @override
   Future<bool> logOut() async {
     await _googleService.signOut();
+    await StoreInteractor.removeRole();
     return await StoreInteractor.removeToken();
   }
 
   Future<void> _savePatientData(User user) async {
     await StoreInteractor.setToken(user.uid);
+    await StoreInteractor.setRole(0);
     await DiaFirestoreHelper.savePatientData(
       await StoreInteractor.getToken(),
       user.displayName,
@@ -72,6 +82,7 @@ class FirebaseAuthRepository extends AuthRepository {
 
   Future<void> _saveDoctorData(User user) async {
     await StoreInteractor.setToken(user.uid);
+    await StoreInteractor.setRole(1);
     await DiaFirestoreHelper.saveDoctorData(
       await StoreInteractor.getToken(),
       user.displayName,

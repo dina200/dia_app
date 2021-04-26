@@ -55,6 +55,10 @@ class DiaFirestoreHelper {
     return snapshot.data();
   }
 
+  static Future<void> addPatient(String doctorId, String patientId) async {
+    await _getDoctorDocRef(doctorId).update({PATIENTS: FieldValue.arrayUnion([patientId])});
+  }
+
   static Future<List<QueryDocumentSnapshot>> fetchBloodSugarStatistic(
     String userId,
     DateTime from,

@@ -226,9 +226,19 @@
     "type": "text",
     "description": "The button text 'Send id"
   },
-  "sendIdText": "My id for DIA APP: ",
+  "sendIdText": "My id for DIA APP:",
   "@sendIdText": {
     "type": "text",
     "description": "The message text for doctor"
+  },
+  "patients": "Patients",
+  "@patients": {
+    "type": "text",
+    "description": "Patients' item"
+  },
+  "doctor": "Doctor",
+  "@doctor": {
+    "type": "text",
+    "description": "Doctor's item"
   }
 }

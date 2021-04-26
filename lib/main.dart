@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 
 import 'src/app/pages/login/login_page.dart';
 import 'src/app/pages/main/main_page.dart';
+import 'src/app/pages/main_doctor/main_doctor.dart';
 import 'src/data/firebase_repositories/firebase_auth_repository.dart';
 import 'src/data/firebase_repositories/firebase_user_repository.dart';
 import 'src/device/utils/google_service.dart';
@@ -21,15 +22,18 @@ Future<void> main() async {
     ..registerSingleton<UserRepository>(FirebaseUserRepository());
 
   final isLoggedIn = await GetIt.I<AuthRepository>().isLoggedIn;
-  runApp(MyApp(isLoggedIn: isLoggedIn));
+  final role = await GetIt.I<AuthRepository>().role;
+  runApp(MyApp(isLoggedIn: isLoggedIn, role: role));
 }
 
 class MyApp extends StatelessWidget {
   final bool isLoggedIn;
+  final int role;
 
   const MyApp({
     Key key,
     @required this.isLoggedIn,
+    @required this.role,
   })  : assert(isLoggedIn != null),
         super(key: key);
 
@@ -52,7 +56,10 @@ class MyApp extends StatelessWidget {
 
   Route _onGenerateRoute(RouteSettings settings) {
     if (isLoggedIn) {
-      return MainPage.buildPageRoute();
+      switch(role) {
+        case 0: return MainPage.buildPageRoute();
+        case 1: return MainDoctorPage.buildPageRoute();
+      }
     }
     return LoginPage.buildPageRoute();
   }
