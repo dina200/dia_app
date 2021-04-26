@@ -14,7 +14,7 @@ import 'dia_firestore_helper.dart';
 class FirebaseUserRepository extends UserRepository {
   Future<void> changeUserData(String name, String docEmail) async {
     try {
-      await DiaFirestoreHelper.changeUserData(await _token, name, docEmail);
+      await DiaFirestoreHelper.changePatientData(await _token, name, docEmail);
     } catch (e) {
       //TODO: handle exception
       rethrow;
@@ -23,7 +23,7 @@ class FirebaseUserRepository extends UserRepository {
 
   Future<User> fetchUser() async {
     try {
-      final data = await DiaFirestoreHelper.fetchUserData(await _token);
+      final data = await DiaFirestoreHelper.fetchPatientData(await _token);
       return Patient(
         id: data[ID],
         email: data[EMAIL],

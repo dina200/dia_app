@@ -18,3 +18,10 @@ class Patient extends User {
   Patient({String id, String email, String fullName, this.docsEmail})
       : super (id: id, email: email, fullName: fullName);
 }
+
+class Doctor extends User {
+  final List<String> patientIds;
+
+  Doctor({String id, String email, String fullName, this.patientIds})
+      : super (id: id, email: email, fullName: fullName);
+}

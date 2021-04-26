@@ -22,21 +22,6 @@ class FirebaseAuthRepository extends AuthRepository {
     return currentUser != null && token != null;
   }
 
-  //TODO: only for test - required to remove
-  @override
-  Future<void> loginWithEmail() async {
-    try {
-      final authResult = await _firebaseAuth.signInWithEmailAndPassword(
-        email: 'asd@asd.asd',
-        password: 'asdasd',
-      );
-      await _saveUserData(authResult.user);
-    } catch (e) {
-      //TODO: handle exception
-      rethrow;
-    }
-  }
-
   @override
   Future<void> loginWithGoogle() async {
     try {
@@ -46,7 +31,24 @@ class FirebaseAuthRepository extends AuthRepository {
         accessToken: googleAuthentication.accessToken,
       );
       final authResult = await _firebaseAuth.signInWithCredential(credential);
-      await _saveUserData(authResult.user);
+      await _savePatientData(authResult.user);
+    } catch (e) {
+      //TODO: handle exception
+      rethrow;
+    }
+  }
+
+
+  @override
+  Future<void> loginWithGoogleAsDoctor() async {
+    try {
+      final googleAuthentication = await _googleService.getGoogleAuthData();
+      final credential = GoogleAuthProvider.credential(
+        idToken: googleAuthentication.idToken,
+        accessToken: googleAuthentication.accessToken,
+      );
+      final authResult = await _firebaseAuth.signInWithCredential(credential);
+      await _saveDoctorData(authResult.user);
     } catch (e) {
       //TODO: handle exception
       rethrow;
@@ -54,21 +56,23 @@ class FirebaseAuthRepository extends AuthRepository {
   }
 
   @override
-  Future<void> loginWithApple() {
-    // TODO: implement loginWithApple
-    throw UnimplementedError();
-  }
-
-  @override
   Future<bool> logOut() async {
-    await _firebaseAuth.signOut();
     await _googleService.signOut();
     return await StoreInteractor.removeToken();
   }
 
-  Future<void> _saveUserData(User user) async {
+  Future<void> _savePatientData(User user) async {
     await StoreInteractor.setToken(user.uid);
-    await DiaFirestoreHelper.saveUserData(
+    await DiaFirestoreHelper.savePatientData(
+      await StoreInteractor.getToken(),
+      user.displayName,
+      user.email,
+    );
+  }
+
+  Future<void> _saveDoctorData(User user) async {
+    await StoreInteractor.setToken(user.uid);
+    await DiaFirestoreHelper.saveDoctorData(
       await StoreInteractor.getToken(),
       user.displayName,
       user.email,

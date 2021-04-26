@@ -9,44 +9,28 @@ class _LoginButtons extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          //TODO: only for test - required to remove
-          RaisedButton(
-            child: Text('SIGN IN WITH TEST ACCOUNT'),
-            color: Colors.red,
-            onPressed: () => _loginWithTestAccount(context),
-          ),
-          SizedBox(height: 16.0),
           RaisedButton(
             child: Text(locale.enterWithGoogle),
             onPressed: () => _loginWithGoogle(context),
           ),
-          if (Platform.isIOS)
-            Column(
-              children: [
-                SizedBox(height: 16.0),
-                Text(locale.or),
-                SizedBox(height: 16.0),
-                RaisedButton(
-                  child: Text(locale.enterWithApple),
-                  onPressed: () => _loginWithApple(context),
-                ),
-              ],
-            ),
+          SizedBox(height: 16.0),
+          Text(locale.or),
+          SizedBox(height: 16.0),
+          RaisedButton(
+            child: Text(locale.enterWithGoogleAsDoctor),
+            onPressed: () => _loginWithGoogleAsDoctor(context),
+          ),
         ],
       ),
     );
-  }
-
-  Future<void> _loginWithTestAccount(BuildContext context) async {
-    await _login(context, context.read<LoginPagePresenter>().loginWithEmail);
   }
 
   Future<void> _loginWithGoogle(BuildContext context) async {
     await _login(context, context.read<LoginPagePresenter>().loginWithGoogle);
   }
 
-  Future<void> _loginWithApple(BuildContext context) async {
-    await _login(context, context.read<LoginPagePresenter>().loginWithApple);
+  Future<void> _loginWithGoogleAsDoctor(BuildContext context) async {
+    await _login(context, context.read<LoginPagePresenter>().loginWithGoogleAsDoctor);
   }
 
   Future<void> _login(BuildContext context, Function login) async {

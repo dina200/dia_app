@@ -12,16 +12,12 @@ class LoginPagePresenter with ChangeNotifier {
 
   LoginPagePresenter() : _authRepository = GetIt.I.get<AuthRepository>();
 
-  Future<void> loginWithEmail() async {
-    await _login(_authRepository.loginWithEmail);
-  }
-
   Future<void> loginWithGoogle() async {
     await _login(_authRepository.loginWithGoogle);
   }
 
-  Future<void> loginWithApple() async {
-    await _login(_authRepository.loginWithApple);
+  Future<void> loginWithGoogleAsDoctor() async {
+    await _login(_authRepository.loginWithGoogleAsDoctor);
   }
 
   Future<void> _login(Function login) async {
