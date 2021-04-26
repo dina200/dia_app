@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-const String USERS = 'users';
+const String USERS = 'patients';
 const String ID = 'id';
 const String NAME = 'name';
 const String EMAIL = 'email';
