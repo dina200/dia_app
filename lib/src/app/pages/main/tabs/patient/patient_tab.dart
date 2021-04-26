@@ -7,9 +7,9 @@ import 'package:dia_app/src/app/widgets/size_wrapper_for_text_form_field.dart';
 import 'package:dia_app/src/app/pages/main/main_page_presenter.dart';
 import 'package:dia_app/src/app/widgets/loading_layout.dart';
 
-part 'widgets/_user_data_form.dart';
+part 'widgets/_patient_data_form.dart';
 
-class UserTab extends StatelessWidget {
+class PatientTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final watch = context.watch<MainPagePresenter>();
@@ -17,7 +17,7 @@ class UserTab extends StatelessWidget {
       isLoading: watch.isUserLoading,
       child: SingleChildScrollView(
         child: PaddingWrapperForTab(
-          child: watch.isUserLoading ? SizedBox() : _UserDataForm(),
+          child: watch.isUserLoading ? SizedBox() : _PatientDataForm(),
         ),
       ),
     );

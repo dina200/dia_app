@@ -24,7 +24,7 @@ class FirebaseUserRepository extends UserRepository {
   Future<User> fetchUser() async {
     try {
       final data = await DiaFirestoreHelper.fetchUserData(await _token);
-      return User(
+      return Patient(
         id: data[ID],
         email: data[EMAIL],
         fullName: data[NAME],

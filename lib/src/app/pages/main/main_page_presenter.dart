@@ -17,18 +17,18 @@ class MainPagePresenter with ChangeNotifier {
   final AuthRepository _authRepository;
   final UserRepository _userRepository;
 
-  User _user;
+  Patient _patient;
   List<BloodSugarStatistic> _bloodSugarStatistic;
   TimeRangeFilters _timeRangeFilter = TimeRangeFilters.wholeTime;
-  bool _isUserLoading = false;
+  bool _isPatientLoading = false;
   bool _isLogOutLoading = false;
   bool _isSavingData = false;
   bool _isStatisticLoading = false;
 
-  User get user => _user;
+  Patient get patient => _patient;
   List<BloodSugarStatistic> get bloodSugarStatistic => _bloodSugarStatistic;
   TimeRangeFilters get timeRangeFilter => _timeRangeFilter;
-  bool get isUserLoading => _isUserLoading;
+  bool get isUserLoading => _isPatientLoading;
   bool get isLogOutLoading => _isLogOutLoading;
   bool get isSavingData => _isSavingData;
   bool get isStatisticLoading => _isStatisticLoading;
@@ -42,7 +42,7 @@ class MainPagePresenter with ChangeNotifier {
   }
 
   Future<void> init() async {
-    _isUserLoading = true;
+    _isPatientLoading = true;
     _isStatisticLoading = true;
     notifyListeners();
 
@@ -51,22 +51,22 @@ class MainPagePresenter with ChangeNotifier {
       _userRepository.fetchBloodSugarStatistic(),
     ]);
 
-    _user = results[0];
+    _patient = results[0];
     _bloodSugarStatistic = results[1];
 
-    _isUserLoading = false;
+    _isPatientLoading = false;
     _isStatisticLoading = false;
     notifyListeners();
   }
 
   Future<void> saveUserData(String name, String docEmail) async {
-    _isUserLoading = true;
+    _isPatientLoading = true;
     notifyListeners();
 
     await _userRepository.changeUserData(name, docEmail);
-    _user = await _userRepository.fetchUser();
+    _patient = await _userRepository.fetchUser();
 
-    _isUserLoading = false;
+    _isPatientLoading = false;
     notifyListeners();
   }
 
@@ -113,13 +113,13 @@ class MainPagePresenter with ChangeNotifier {
       'statistic': _bloodSugarStatistic,
     });
     await launch(
-        'mailto:${_user.docsEmail ?? ''}?subject=${locale.bloodSugarStatistic}: ${user.fullName}&body=$statistic');
+        'mailto:${_patient.docsEmail ?? ''}?subject=${locale.bloodSugarStatistic}: ${patient.fullName}&body=$statistic');
   }
 
   Future<void> sendUserId() async {
     final locale = DiaLocalizations.of(_context);
     await launch(
-      'mailto:${_user.docsEmail ?? ''}?subject=${user.fullName}&body=${locale.sendIdText} ${user.id}');
+      'mailto:${_patient.docsEmail ?? ''}?subject=${patient.fullName}&body=${locale.sendIdText} ${patient.id}');
   }
 }
 

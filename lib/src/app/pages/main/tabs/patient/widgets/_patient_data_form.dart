@@ -1,11 +1,11 @@
-part of '../user_tab.dart';
+part of '../patient_tab.dart';
 
-class _UserDataForm extends StatefulWidget {
+class _PatientDataForm extends StatefulWidget {
   @override
-  _UserDataFormState createState() => _UserDataFormState();
+  _PatientDataFormState createState() => _PatientDataFormState();
 }
 
-class _UserDataFormState extends State<_UserDataForm> {
+class _PatientDataFormState extends State<_PatientDataForm> {
   final _formKey = GlobalKey<FormState>();
   final _userNameKey = GlobalKey<FormFieldState<String>>();
   final _docEmailKey = GlobalKey<FormFieldState<String>>();
@@ -32,7 +32,7 @@ class _UserDataFormState extends State<_UserDataForm> {
               children: [
                 Text(_locale.actionWithUserId),
                 SizedBox(height: 8.0),
-                SelectableText(_watch.user.id),
+                SelectableText(_watch.patient.id),
                 SizedBox(height: 8.0),
                 RaisedButton(child: Text(_locale.sendId), onPressed: _read.sendUserId),
               ],
@@ -46,7 +46,7 @@ class _UserDataFormState extends State<_UserDataForm> {
                 child: SizeWrapperForTextFormField(
                   child: TextFormField(
                     key: _userNameKey,
-                    initialValue: _watch.user.fullName,
+                    initialValue: _watch.patient.fullName,
                     textAlign: TextAlign.center,
                     validator: _userNameValidator,
                     decoration: InputDecoration(hintText: _locale.userNameExample),
@@ -63,7 +63,7 @@ class _UserDataFormState extends State<_UserDataForm> {
                 child: SizeWrapperForTextFormField(
                   child: TextFormField(
                     key: _docEmailKey,
-                    initialValue: _watch.user.docsEmail,
+                    initialValue: _watch.patient.docsEmail,
                     textAlign: TextAlign.center,
                     validator: _docEmailValidator,
                     decoration: InputDecoration(hintText: _locale.docEmailExample),

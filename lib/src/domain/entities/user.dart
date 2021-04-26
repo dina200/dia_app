@@ -1,15 +1,20 @@
 import 'package:meta/meta.dart';
 
-class User {
+abstract class User {
   final String id;
   final String email;
   final String fullName;
-  final String docsEmail;
 
   User({
     @required this.id,
     @required this.email,
     this.fullName,
-    this.docsEmail,
-  })  : assert(email != null);
+  })  : assert(id != null), assert(email != null);
+}
+
+class Patient extends User {
+  final String docsEmail;
+
+  Patient({String id, String email, String fullName, this.docsEmail})
+      : super (id: id, email: email, fullName: fullName);
 }

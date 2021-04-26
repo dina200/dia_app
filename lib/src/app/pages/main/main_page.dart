@@ -10,7 +10,7 @@ import 'package:dia_app/src/app/widgets/loading_layout.dart';
 import 'main_page_presenter.dart';
 import 'tabs/diagnostics/diagnostics_tab.dart';
 import 'tabs/statistics/statistics_tab.dart';
-import 'tabs/user/user_tab.dart';
+import 'tabs/patient/patient_tab.dart';
 
 class MainPage extends StatefulWidget {
   static const nameRoute = routes.main;
@@ -106,7 +106,7 @@ class _MainPageState extends State<MainPage> {
 
   Widget _tabBuilder() {
     switch (_selectedIndex) {
-      case 0: return UserTab();
+      case 0: return PatientTab();
       case 1: return DiagnosticsTab();
       case 2: return StatisticsTab();
       default: return Container();
