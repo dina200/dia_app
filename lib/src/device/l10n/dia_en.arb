@@ -1,198 +1,159 @@
 {
   "appName": "Dia App",
   "@appName": {
-    "type": "text",
-    "description": "The application's name"
+    "type": "text"
   },
   "tagline": "your health under control",
   "@tagline": {
-    "type": "text",
-    "description": "The application's tagline"
+    "type": "text"
   },
   "enterWithGoogle": "Sign in via Google",
   "@enterWithGoogle": {
-    "type": "text",
-    "description": "The button's title for a signing in via Google"
+    "type": "text"
   },
   "enterWithGoogleAsDoctor": "Sign in via Google as doctor",
   "@enterWithGoogleAsDoctor": {
-    "type": "text",
-    "description": "The button's title for a signing in via Google"
+    "type": "text"
   },
   "or": "or",
   "@or": {
-    "type": "text",
-    "description": "It is used to link alternatives"
+    "type": "text"
   },
   "enterWithApple": "Sign in via Apple",
   "@enterWithApple": {
-    "type": "text",
-    "description": "The button's title for a signing in via Apple"
+    "type": "text"
   },
   "dontHaveAccount": "Don't have an account?",
   "@dontHaveAccount": {
-    "type": "text",
-    "description": "The question for user does not have an account"
+    "type": "text"
   },
   "signUpVerb": "Sign up",
   "@signUpVerb": {
-    "type": "text",
-    "description": "By another words this is a process of registration"
+    "type": "text"
   },
   "enterSugarInBloodMeasure": "Please, enter the data of blood sugar (mmol/L)",
   "@enterSugarInBloodMeasure": {
-    "type": "text",
-    "description": "An asking to enter the data of blood sugar"
+    "type": "text"
   },
   "bloodSugarDataExample": "The example: 4.5",
   "@bloodSugarDataExample": {
-    "type": "text",
-    "description": "The example of input blood sugar"
+    "type": "text"
   },
   "errorInputData": "Please, input data...",
   "@errorInputData": {
-    "type": "text",
-    "description": "The error message if the input field is empty"
+    "type": "text"
   },
   "errorExampleOfInput": "Example of input format: \"4.5\"",
   "@errorExampleOfInput": {
-    "type": "text",
-    "description": "The error message if the input format is incorrect"
+    "type": "text"
   },
   "errorInvalidDataOfBloodSugar": "0.0 < value < 70.0",
   "@errorInvalidDataOfBloodSugar": {
-    "type": "text",
-    "description": "The error message about invalid data of blood sugar"
+    "type": "text"
   },
   "sendNewData": "Send the blood sugar data",
   "@sendNewData": {
-    "type": "text",
-    "description": "The button's title for a sending data about blood sugar"
+    "type": "text"
   },
   "showDiagnosis": "Show diagnosis",
   "@showDiagnosis": {
-    "type": "text",
-    "description": "The button's title for a showing diagnosis"
+    "type": "text"
   },
   "user": "User",
   "@user": {
-    "type": "text",
-    "description": "The name of first tab on main screen"
+    "type": "text"
   },
   "diagnostics": "Diagnostics",
   "@diagnostics": {
-    "type": "text",
-    "description": "The name of second tab on main screen"
+    "type": "text"
   },
   "statistics": "Statistics",
   "@statistics": {
-    "type": "text",
-    "description": "The name of third tab on main screen"
+    "type": "text"
   },
   "mmolPerL": "mmol/L",
   "@mmolPerL": {
-    "type": "text",
-    "description": "Medical tests report results in millimoles per litre"
+    "type": "text"
   },
   "hypoglycemia": "Hypoglycemia",
   "@hypoglycemia": {
-    "type": "text",
-    "description": "This is a condition in which blood sugar (glucose) level is lower than normal"
+    "type": "text"
   },
   "hyperglycemia": "Hyperglycemia",
   "@hyperglycemia": {
-    "type": "text",
-    "description": "This refers to high levels of sugar, or glucose, in the blood"
+    "type": "text"
   },
   "normal": "Normal",
   "@normal": {
-    "type": "text",
-    "description": "This is a condition in which blood sugar (glucose) level is normal"
+    "type": "text"
   },
   "dataNotSaved": "The data isn't saved",
   "@dataNotSaved": {
-    "type": "text",
-    "description": "The error message if the data was not saved"
+    "type": "text"
   },
   "dataSaved": "The data saved",
   "@dataSaved": {
-    "type": "text",
-    "description": "The message if the data was saved successfully"
+    "type": "text"
   },
   "userName": "User's name",
   "@userName": {
-    "type": "text",
-    "description": "The name of user's name field"
+    "type": "text"
   },
   "doctorName": "Doctor's name",
   "@doctorName": {
-    "type": "text",
-    "description": "The name of doctor's name field"
+    "type": "text"
   },
   "userNameExample": "The example: Ivan Ivanov",
   "@userNameExample": {
-    "type": "text",
-    "description": "The example of input user name"
+    "type": "text"
   },
   "docEmail": "Doc's e-mail",
   "@docEmail": {
-    "type": "text",
-    "description": "The name of doc's e-mail field"
+    "type": "text"
   },
   "docEmailExample": "The example: doc@mail.com",
   "@docEmailExample": {
-    "type": "text",
-    "description": "The example of input doc's e-mail"
+    "type": "text"
   },
   "invalidEmailFormat": "Invalid e-mail format",
   "@invalidEmailFormat": {
-    "type": "text",
-    "description": "The error message if the e-mail format is invalid"
+    "type": "text"
   },
   "save": "Save",
   "@save": {
-    "type": "text",
-    "description": "The button's title for a saving some data"
+    "type": "text"
   },
   "changeUser": "Change user",
   "@changeUser": {
-    "type": "text",
-    "description": "The button's title for a leaving the account"
+    "type": "text"
   },
   "today": "Today",
   "@today": {
-    "type": "text",
-    "description": "The first name of the time range filter"
+    "type": "text"
   },
   "last7days": "Last 7 days",
   "@last7days": {
-    "type": "text",
-    "description": "The second name of the time range filter"
+    "type": "text"
   },
   "last30days": "Last 30 days",
   "@last30days": {
-    "type": "text",
-    "description": "The third name of the time range filter"
+    "type": "text"
   },
   "year": "Year",
   "@year": {
-    "type": "text",
-    "description": "The fourth name of the time range filter"
+    "type": "text"
   },
   "wholeTime": "Whole time",
   "@wholeTime": {
-    "type": "text",
-    "description": "The fifth name of the time range filter"
+    "type": "text"
   },
   "sendDataToDoc": "Send the statistic to your doctor",
   "@sendDataToDoc": {
-    "type": "text",
-    "description": "The name of floating action button for sending data to doctor"
+    "type": "text"
   },
   "minMaxBloodSugar": "Min: {min}, Max: {max}",
   "@minMaxBloodSugar": {
     "type": "text",
-    "description": "Min/max values of blood sugar",
     "placeholders": {
       "min": {},
       "max": {}
@@ -201,59 +162,60 @@
   "diagnosisData": "Your average blood sugar indicator {averageBloodSugar} mmol/L.",
   "@diagnosisData": {
     "type": "text",
-    "description": "The data about user's diagnosis",
     "placeholders": {
       "averageBloodSugar": {}
     }
   },
   "referenceInfoAboutBloodSugar": "The norm is from 4.1 to 5.9.",
   "@referenceInfoAboutBloodSugar": {
-    "type": "text",
-    "description": "The reference information about blood sugar levels"
+    "type": "text"
   },
   "bloodSugarStatistic": "The patient's blood sugar statistic",
   "@bloodSugarStatistic": {
-    "type": "text",
-    "description": "The subject of email for doctor"
+    "type": "text"
   },
   "noData": "There is no data yet",
   "@noData": {
-    "type": "text",
-    "description": "The placeholder for chart"
+    "type": "text"
   },
   "actionWithUserId": "Send the id to your doctor:",
   "@actionWithUserId": {
-    "type": "text",
-    "description": "The info about user's id"
+    "type": "text"
   },
   "sendId": "Send id",
   "@sendId": {
-    "type": "text",
-    "description": "The button text 'Send id"
+    "type": "text"
   },
   "sendIdText": "My id for DIA APP:",
   "@sendIdText": {
-    "type": "text",
-    "description": "The message text for doctor"
+    "type": "text"
   },
   "patients": "Patients",
   "@patients": {
-    "type": "text",
-    "description": "Patients' item"
+    "type": "text"
   },
   "doctor": "Doctor",
   "@doctor": {
-    "type": "text",
-    "description": "Doctor's item"
+    "type": "text"
   },
   "enterPatientId": "Enter patient id",
   "@enterPatientId": {
-    "type": "text",
-    "description": "Field's hint - enterPatientId"
+    "type": "text"
   },
   "addPatient": "Add patient",
   "@addPatient": {
-    "type": "text",
-    "description": "Button name"
+    "type": "text"
+  },
+  "connectGlucometer": "Press to connect a glucometer to application",
+  "@connectGlucometer": {
+    "type": "text"
+  },
+  "searchGlucometer": "Search for a glucometer",
+  "@searchGlucometer": {
+    "type": "text"
+  },
+  "fetchBloodSugar": "Please, use your glucometer to fetch your blood sugar",
+  "@fetchBloodSugar": {
+    "type": "text"
   }
 }
