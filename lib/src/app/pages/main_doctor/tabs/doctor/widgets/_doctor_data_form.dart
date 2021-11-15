@@ -9,7 +9,6 @@ class _DoctorDataFormState extends State<_DoctorDataForm> {
   final _formKey = GlobalKey<FormState>();
 
   MainDoctorPagePresenter get _watch => context.watch<MainDoctorPagePresenter>();
-  MainDoctorPagePresenter get _read => context.read<MainDoctorPagePresenter>();
   DiaLocalizations get _locale => DiaLocalizations.of(context);
 
   @override

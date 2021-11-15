@@ -9,14 +9,14 @@ class _LoginButtons extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          RaisedButton(
+          ElevatedButton(
             child: Text(locale.enterWithGoogle),
             onPressed: () => _loginWithGoogle(context),
           ),
           SizedBox(height: 16.0),
           Text(locale.or),
           SizedBox(height: 16.0),
-          RaisedButton(
+          ElevatedButton(
             child: Text(locale.enterWithGoogleAsDoctor),
             onPressed: () => _loginWithGoogleAsDoctor(context),
           ),

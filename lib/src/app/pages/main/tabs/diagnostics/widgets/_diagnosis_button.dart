@@ -5,7 +5,7 @@ class _DiagnosisButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = DiaLocalizations.of(context);
 
-    return RaisedButton(
+    return ElevatedButton(
       child: Text(locale.showDiagnosis),
       onPressed: () => _onShowDiagnosisPressed(context),
     );

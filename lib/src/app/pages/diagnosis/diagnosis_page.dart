@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
-import 'package:fl_animated_linechart/fl_animated_linechart.dart';
+import 'package:line_chart/charts/line-chart.widget.dart';
+import 'package:line_chart/model/line-chart.model.dart';
 import 'package:provider/provider.dart';
 
 import 'package:dia_app/src/app/routes.dart' as routes;

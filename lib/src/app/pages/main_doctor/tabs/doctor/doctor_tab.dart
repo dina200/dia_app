@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'package:dia_app/src/app/widgets/padding_wrapper_for_tab.dart';
-import 'package:dia_app/src/app/widgets/size_wrapper_for_text_form_field.dart';
 import 'package:dia_app/src/app/pages/main_doctor/main_doctor_presenter.dart';
 import 'package:dia_app/src/app/widgets/loading_layout.dart';
 

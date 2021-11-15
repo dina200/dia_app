@@ -34,7 +34,7 @@ class _PatientDataFormState extends State<_PatientDataForm> {
                 SizedBox(height: 8.0),
                 SelectableText(_watch.patient.id),
                 SizedBox(height: 8.0),
-                RaisedButton(child: Text(_locale.sendId), onPressed: _read.sendUserId),
+                ElevatedButton(child: Text(_locale.sendId), onPressed: _read.sendUserId),
               ],
             ),
           ),
@@ -73,7 +73,7 @@ class _PatientDataFormState extends State<_PatientDataForm> {
             ],
           ),
           SizedBox(height: 16.0),
-          RaisedButton(
+          ElevatedButton(
             child: Text(_locale.save),
             onPressed: _saveUserData,
           ),

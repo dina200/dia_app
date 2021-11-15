@@ -15,7 +15,6 @@ class _PatientsTabState extends State<PatientsTab> {
   
   ThemeData get _theme => Theme.of(context);
   DiaLocalizations get _locale => DiaLocalizations.of(context);
-  MainDoctorPagePresenter get _watch => context.watch<MainDoctorPagePresenter>();
   MainDoctorPagePresenter get _read => context.read<MainDoctorPagePresenter>();
 
   @override
@@ -35,7 +34,7 @@ class _PatientsTabState extends State<PatientsTab> {
                 validator: _patientIdValidator,
                 decoration: InputDecoration(hintText: _locale.enterPatientId),
               ),
-              RaisedButton(
+              ElevatedButton(
                 child: Text(_locale.addPatient),
                 onPressed: () async {
                   try {
@@ -90,7 +89,7 @@ class _PatientsTabState extends State<PatientsTab> {
   }
 
   void _showSnackBar(Text text) {
-    Scaffold.of(context).showSnackBar(SnackBar(content: text));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: text));
   }
 }
 
