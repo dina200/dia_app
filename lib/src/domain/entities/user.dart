@@ -15,6 +15,18 @@ abstract class User {
     @required this.email,
     this.fullName,
   })  : assert(id != null), assert(email != null);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is User &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          email == other.email &&
+          fullName == other.fullName;
+
+  @override
+  int get hashCode => id.hashCode ^ email.hashCode ^ fullName.hashCode;
 }
 
 class Patient extends User {

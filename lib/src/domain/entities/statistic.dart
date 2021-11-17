@@ -84,6 +84,17 @@ class BloodSugarStatistic extends Statistic {
   String getBriefInfo(DiaLocalizations locale) {
     return '${super.getSimpleDateTime()}, ${getBloodSugar(locale)}';
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BloodSugarStatistic &&
+          runtimeType == other.runtimeType &&
+          dateTimeOfMeasure == other.dateTimeOfMeasure &&
+          bloodSugar == other.bloodSugar;
+
+  @override
+  int get hashCode => bloodSugar.hashCode;
 }
 
 enum BloodSugarDiagnosis {
