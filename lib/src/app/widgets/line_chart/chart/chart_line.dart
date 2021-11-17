@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/chart/chart_point.dart';
+import 'package:dia_app/src/app/widgets/line_chart/chart/chart_point.dart';
 
 class ChartLine {
   final List<ChartPoint> points;

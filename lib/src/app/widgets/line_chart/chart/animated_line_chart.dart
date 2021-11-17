@@ -1,12 +1,12 @@
 import 'dart:math';
 
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/chart/area_line_chart.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/chart/datetime_chart_point.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/chart/highlight_point.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/chart/line_chart.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/common/animated_path_util.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/common/pair.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/common/text_direction_helper.dart';
+import 'package:dia_app/src/app/widgets/line_chart/chart/area_line_chart.dart';
+import 'package:dia_app/src/app/widgets/line_chart/chart/datetime_chart_point.dart';
+import 'package:dia_app/src/app/widgets/line_chart/chart/highlight_point.dart';
+import 'package:dia_app/src/app/widgets/line_chart/chart/line_chart.dart';
+import 'package:dia_app/src/app/widgets/line_chart/common/animated_path_util.dart';
+import 'package:dia_app/src/app/widgets/line_chart/common/pair.dart';
+import 'package:dia_app/src/app/widgets/line_chart/common/text_direction_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';

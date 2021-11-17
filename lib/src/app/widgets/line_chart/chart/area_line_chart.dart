@@ -1,8 +1,8 @@
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/chart/chart_line.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/chart/datetime_series_converter.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/chart/line_chart.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/common/dates.dart';
-import 'package:dia_app/src/app/pages/diagnosis/widgets/line_chart/common/pair.dart';
+import 'package:dia_app/src/app/widgets/line_chart/chart/chart_line.dart';
+import 'package:dia_app/src/app/widgets/line_chart/chart/datetime_series_converter.dart';
+import 'package:dia_app/src/app/widgets/line_chart/chart/line_chart.dart';
+import 'package:dia_app/src/app/widgets/line_chart/common/dates.dart';
+import 'package:dia_app/src/app/widgets/line_chart/common/pair.dart';
 import 'package:flutter/rendering.dart';
 
 class AreaLineChart extends LineChart {
