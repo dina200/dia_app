@@ -75,8 +75,8 @@ class BloodSugarStatistic extends Statistic {
   Color get color {
     switch (diagnosis) {
       case BloodSugarDiagnosis.hypoglycemia: return Color(0xFFA0C4FF);
-      case BloodSugarDiagnosis.hyperglycemia: return Color(0xFFffadad);
       case BloodSugarDiagnosis.normal: return Color(0xFFCAFFBF);
+      case BloodSugarDiagnosis.hyperglycemia: return Color(0xFFffadad);
       default: return Color(0xFFFFFFFF);
     }
   }
