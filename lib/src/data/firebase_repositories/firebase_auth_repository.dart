@@ -11,22 +11,24 @@ import 'dia_firestore_helper.dart';
 class FirebaseAuthRepository extends AuthRepository {
   final auth.FirebaseAuth _firebaseAuth;
   final GoogleService _googleService;
+  final StoreInteractor _storeInteractor;
 
   FirebaseAuthRepository()
       : _firebaseAuth =  auth.FirebaseAuth.instance,
-        _googleService = GetIt.I<GoogleService>();
+        _googleService = GetIt.I<GoogleService>(),
+        _storeInteractor = GetIt.I<StoreInteractor>();
 
   @override
   Future<bool> get isLoggedIn async {
     final currentUser = _firebaseAuth.currentUser;
-    final token = await StoreInteractor.getToken();
+    final token = await _storeInteractor.getToken();
     return currentUser != null && token != null;
   }
 
   @override
   Future<UserRole> get role async {
     if (await isLoggedIn) {
-      return await StoreInteractor.getRole();
+      return await _storeInteractor.getRole();
     }
     return null;
   }
@@ -57,25 +59,25 @@ class FirebaseAuthRepository extends AuthRepository {
   @override
   Future<bool> logOut() async {
     await _googleService.signOut();
-    await StoreInteractor.removeRole();
-    return await StoreInteractor.removeToken();
+    await _storeInteractor.removeRole();
+    return await _storeInteractor.removeToken();
   }
 
   Future<void> _savePatientData(auth.User user) async {
-    await StoreInteractor.setToken(user.uid);
-    await StoreInteractor.setRole(UserRole.Patient);
+    await _storeInteractor.setToken(user.uid);
+    await _storeInteractor.setRole(UserRole.Patient);
     await DiaFirestoreHelper.savePatientData(
-      await StoreInteractor.getToken(),
+      await _storeInteractor.getToken(),
       user.displayName,
       user.email,
     );
   }
 
   Future<void> _saveDoctorData(auth.User user) async {
-    await StoreInteractor.setToken(user.uid);
-    await StoreInteractor.setRole(UserRole.Doctor);
+    await _storeInteractor.setToken(user.uid);
+    await _storeInteractor.setRole(UserRole.Doctor);
     await DiaFirestoreHelper.saveDoctorData(
-      await StoreInteractor.getToken(),
+      await _storeInteractor.getToken(),
       user.displayName,
       user.email,
     );

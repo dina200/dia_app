@@ -1,3 +1,4 @@
+import 'package:dia_app/src/device/utils/store_interactor.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ Future<void> main() async {
 
   GetIt.I
     ..registerSingleton<GoogleService>(GoogleService())
+    ..registerSingleton<StoreInteractor>(StoreInteractor())
     ..registerSingleton<AuthRepository>(FirebaseAuthRepository())
     ..registerSingleton<PatientRepository>(FirebasePatientRepository())
     ..registerSingleton<DoctorRepository>(FirebaseDoctorRepository());

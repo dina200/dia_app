@@ -8,6 +8,7 @@ import 'package:dia_app/src/domain/entities/statistic.dart';
 import 'package:dia_app/src/domain/entities/time_range.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
+import 'package:get_it/get_it.dart';
 
 import 'dia_firestore_helper.dart';
 
@@ -67,7 +68,9 @@ class FirebaseDoctorRepository extends _FirebaseUserRepository
 }
 
 abstract class _FirebaseUserRepository extends UserRepository {
-  Future<String> get _token async => await StoreInteractor.getToken();
+  Future<String> get _token async {
+    return await GetIt.I<StoreInteractor>().getToken();
+  }
 
   @override
   Future<Doctor> fetchDoctor() async {
