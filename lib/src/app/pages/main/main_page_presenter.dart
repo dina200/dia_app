@@ -15,7 +15,7 @@ import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 class MainPagePresenter with ChangeNotifier {
   final BuildContext _context;
   final AuthRepository _authRepository;
-  final UserRepository _userRepository;
+  final PatientRepository _patientrRepository;
 
   Patient _patient;
   List<BloodSugarStatistic> _bloodSugarStatistic;
@@ -37,7 +37,7 @@ class MainPagePresenter with ChangeNotifier {
 
   MainPagePresenter(this._context)
       : _authRepository = GetIt.I.get<AuthRepository>(),
-        _userRepository = GetIt.I.get<UserRepository>() {
+        _patientrRepository = GetIt.I.get<PatientRepository>() {
     init();
   }
 
@@ -47,8 +47,8 @@ class MainPagePresenter with ChangeNotifier {
     notifyListeners();
 
     final results = await Future.wait([
-      _userRepository.fetchPatient(),
-      _userRepository.fetchBloodSugarStatistic(),
+      _patientrRepository.fetchCurrentPatient(),
+      _patientrRepository.fetchBloodSugarStatistic(),
     ]);
 
     _patient = results[0];
@@ -63,8 +63,8 @@ class MainPagePresenter with ChangeNotifier {
     _isPatientLoading = true;
     notifyListeners();
 
-    await _userRepository.changePatientData(name, docEmail);
-    _patient = await _userRepository.fetchPatient();
+    await _patientrRepository.changePatientData(name, docEmail);
+    _patient = await _patientrRepository.fetchCurrentPatient();
 
     _isPatientLoading = false;
     notifyListeners();
@@ -84,7 +84,7 @@ class MainPagePresenter with ChangeNotifier {
     _isSavingData = true;
     notifyListeners();
 
-    await _userRepository.saveBloodSugarData(
+    await _patientrRepository.saveBloodSugarData(
       BloodSugarStatistic(bloodSugar: double.parse(value)),
     );
 
@@ -99,7 +99,7 @@ class MainPagePresenter with ChangeNotifier {
     notifyListeners();
 
     _timeRangeFilter = filter;
-    _bloodSugarStatistic = await _userRepository
+    _bloodSugarStatistic = await _patientrRepository
         .fetchBloodSugarStatistic(TimeRange.getEntityByFilter(filter));
 
     _isStatisticLoading = false;

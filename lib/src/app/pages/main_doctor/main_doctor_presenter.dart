@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 
 class MainDoctorPagePresenter with ChangeNotifier {
   final AuthRepository _authRepository;
-  final UserRepository _userRepository;
+  final DoctorRepository _doctorRepository;
 
   Doctor _doctor;
   List<Patient> _patients;
@@ -22,7 +22,7 @@ class MainDoctorPagePresenter with ChangeNotifier {
 
   MainDoctorPagePresenter()
       : _authRepository = GetIt.I.get<AuthRepository>(),
-        _userRepository = GetIt.I.get<UserRepository>() {
+        _doctorRepository = GetIt.I.get<DoctorRepository>() {
     init();
   }
 
@@ -32,8 +32,8 @@ class MainDoctorPagePresenter with ChangeNotifier {
     notifyListeners();
 
     final results = await Future.wait([
-      _userRepository.fetchDoctor(),
-      _userRepository.fetchPatients(),
+      _doctorRepository.fetchDoctor(),
+      _doctorRepository.fetchPatients(),
     ]);
 
     _doctor = results[0];
@@ -48,8 +48,8 @@ class MainDoctorPagePresenter with ChangeNotifier {
     _isPatientsLoading = true;
     notifyListeners();
 
-    await _userRepository.addPatient(patientId);
-    _patients = await _userRepository.fetchPatients();
+    await _doctorRepository.addPatient(patientId);
+    _patients = await _doctorRepository.fetchPatients();
 
     _isPatientsLoading = false;
     notifyListeners();

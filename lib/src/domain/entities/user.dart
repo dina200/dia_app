@@ -1,5 +1,10 @@
 import 'package:meta/meta.dart';
 
+enum UserRole {
+  Patient,
+  Doctor,
+}
+
 abstract class User {
   final String id;
   final String email;

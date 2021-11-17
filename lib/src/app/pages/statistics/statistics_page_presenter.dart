@@ -8,11 +8,12 @@ import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 class StatisticPagePresenter extends ChangeNotifier {
   final String patientId;
 
-  StatisticPagePresenter(this.patientId) : _userRepository = GetIt.I.get<UserRepository>() {
+  final UserRepository _patientRepository;
+
+  StatisticPagePresenter(this.patientId)
+      : _patientRepository = GetIt.I.get<PatientRepository>() {
     init();
   }
-
-  final UserRepository _userRepository;
 
   Patient _patient;
   List<BloodSugarStatistic> _bloodSugarStatistic;
@@ -34,8 +35,8 @@ class StatisticPagePresenter extends ChangeNotifier {
     notifyListeners();
 
     final results = await Future.wait([
-      _userRepository.fetchPatientById(patientId),
-      _userRepository.fetchBloodSugarStatisticByPatientId(patientId),
+      _patientRepository.fetchPatientById(patientId),
+      _patientRepository.fetchBloodSugarStatisticByPatientId(patientId),
     ]);
 
     _patient = results[0];
@@ -51,7 +52,7 @@ class StatisticPagePresenter extends ChangeNotifier {
     notifyListeners();
 
     _timeRangeFilter = filter;
-    _bloodSugarStatistic = await _userRepository
+    _bloodSugarStatistic = await _patientRepository
         .fetchBloodSugarStatisticByPatientId(patientId, TimeRange.getEntityByFilter(filter));
 
     _isStatisticLoading = false;

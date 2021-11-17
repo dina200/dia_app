@@ -7,7 +7,7 @@ import 'package:dia_app/src/domain/entities/time_range.dart';
 import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 
 class DiagnosisPagePresenter with ChangeNotifier {
-  final UserRepository _userRepository;
+  final PatientRepository _patientRepository;
 
   Map<DateTime, double> _bloodSugarStatisticSeries;
   TimeRangeFilters _timeRangeFilter = TimeRangeFilters.wholeTime;
@@ -23,7 +23,7 @@ class DiagnosisPagePresenter with ChangeNotifier {
   String get min => _min ?? '...';
   String get max => _max ?? '...';
 
-  DiagnosisPagePresenter() : _userRepository = GetIt.I.get<UserRepository>(){
+  DiagnosisPagePresenter() : _patientRepository = GetIt.I.get<PatientRepository>(){
     init();
   }
 
@@ -31,7 +31,7 @@ class DiagnosisPagePresenter with ChangeNotifier {
     _isStatisticLoading = true;
     notifyListeners();
 
-    final statistic = await _userRepository.fetchBloodSugarStatistic();
+    final statistic = await _patientRepository.fetchBloodSugarStatistic();
     await _fetchStatisticData(statistic);
 
     _isStatisticLoading = false;
@@ -43,7 +43,7 @@ class DiagnosisPagePresenter with ChangeNotifier {
     notifyListeners();
 
     _timeRangeFilter = filter;
-    final statistic = await _userRepository.fetchBloodSugarStatistic(
+    final statistic = await _patientRepository.fetchBloodSugarStatistic(
       TimeRange.getEntityByFilter(filter),
     );
     await _fetchStatisticData(statistic);

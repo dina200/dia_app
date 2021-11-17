@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:get_it/get_it.dart';
 
+import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:dia_app/src/device/utils/google_service.dart';
 import 'package:dia_app/src/device/utils/store_interactor.dart';
 import 'package:dia_app/src/domain/repositories_contracts/auth_repository.dart';
@@ -8,11 +9,11 @@ import 'package:dia_app/src/domain/repositories_contracts/auth_repository.dart';
 import 'dia_firestore_helper.dart';
 
 class FirebaseAuthRepository extends AuthRepository {
-  final FirebaseAuth _firebaseAuth;
+  final auth.FirebaseAuth _firebaseAuth;
   final GoogleService _googleService;
 
   FirebaseAuthRepository()
-      : _firebaseAuth = FirebaseAuth.instance,
+      : _firebaseAuth =  auth.FirebaseAuth.instance,
         _googleService = GetIt.I<GoogleService>();
 
   @override
@@ -23,7 +24,7 @@ class FirebaseAuthRepository extends AuthRepository {
   }
 
   @override
-  Future<int> get role async {
+  Future<UserRole> get role async {
     if (await isLoggedIn) {
       return await StoreInteractor.getRole();
     }
@@ -32,35 +33,25 @@ class FirebaseAuthRepository extends AuthRepository {
 
   @override
   Future<void> loginWithGoogle() async {
-    try {
-      final googleAuthentication = await _googleService.getGoogleAuthData();
-      final credential = GoogleAuthProvider.credential(
-        idToken: googleAuthentication.idToken,
-        accessToken: googleAuthentication.accessToken,
-      );
-      final authResult = await _firebaseAuth.signInWithCredential(credential);
-      await _savePatientData(authResult.user);
-    } catch (e) {
-      //TODO: handle exception
-      rethrow;
-    }
+    final googleAuthentication = await _googleService.getGoogleAuthData();
+    final credential =  auth.GoogleAuthProvider.credential(
+      idToken: googleAuthentication.idToken,
+      accessToken: googleAuthentication.accessToken,
+    );
+    final authResult = await _firebaseAuth.signInWithCredential(credential);
+    await _savePatientData(authResult.user);
   }
 
 
   @override
   Future<void> loginWithGoogleAsDoctor() async {
-    try {
-      final googleAuthentication = await _googleService.getGoogleAuthData();
-      final credential = GoogleAuthProvider.credential(
-        idToken: googleAuthentication.idToken,
-        accessToken: googleAuthentication.accessToken,
-      );
-      final authResult = await _firebaseAuth.signInWithCredential(credential);
-      await _saveDoctorData(authResult.user);
-    } catch (e) {
-      //TODO: handle exception
-      rethrow;
-    }
+    final googleAuthentication = await _googleService.getGoogleAuthData();
+    final credential =  auth.GoogleAuthProvider.credential(
+      idToken: googleAuthentication.idToken,
+      accessToken: googleAuthentication.accessToken,
+    );
+    final authResult = await _firebaseAuth.signInWithCredential(credential);
+    await _saveDoctorData(authResult.user);
   }
 
   @override
@@ -70,9 +61,9 @@ class FirebaseAuthRepository extends AuthRepository {
     return await StoreInteractor.removeToken();
   }
 
-  Future<void> _savePatientData(User user) async {
+  Future<void> _savePatientData(auth.User user) async {
     await StoreInteractor.setToken(user.uid);
-    await StoreInteractor.setRole(0);
+    await StoreInteractor.setRole(UserRole.Patient);
     await DiaFirestoreHelper.savePatientData(
       await StoreInteractor.getToken(),
       user.displayName,
@@ -80,9 +71,9 @@ class FirebaseAuthRepository extends AuthRepository {
     );
   }
 
-  Future<void> _saveDoctorData(User user) async {
+  Future<void> _saveDoctorData(auth.User user) async {
     await StoreInteractor.setToken(user.uid);
-    await StoreInteractor.setRole(1);
+    await StoreInteractor.setRole(UserRole.Doctor);
     await DiaFirestoreHelper.saveDoctorData(
       await StoreInteractor.getToken(),
       user.displayName,

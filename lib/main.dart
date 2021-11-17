@@ -1,3 +1,4 @@
+import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
@@ -19,16 +20,18 @@ Future<void> main() async {
   GetIt.I
     ..registerSingleton<GoogleService>(GoogleService())
     ..registerSingleton<AuthRepository>(FirebaseAuthRepository())
-    ..registerSingleton<UserRepository>(FirebaseUserRepository());
+    ..registerSingleton<PatientRepository>(FirebasePatientRepository())
+    ..registerSingleton<DoctorRepository>(FirebaseDoctorRepository());
 
-  final isLoggedIn = await GetIt.I<AuthRepository>().isLoggedIn;
-  final role = await GetIt.I<AuthRepository>().role;
+  final authRepo = GetIt.I<AuthRepository>();
+  final isLoggedIn = await authRepo.isLoggedIn;
+  final role = await authRepo.role;
   runApp(MyApp(isLoggedIn: isLoggedIn, role: role));
 }
 
 class MyApp extends StatelessWidget {
   final bool isLoggedIn;
-  final int role;
+  final UserRole role;
 
   const MyApp({
     Key key,
@@ -57,8 +60,8 @@ class MyApp extends StatelessWidget {
   Route _onGenerateRoute(RouteSettings settings) {
     if (isLoggedIn) {
       switch(role) {
-        case 0: return MainPage.buildPageRoute();
-        case 1: return MainDoctorPage.buildPageRoute();
+        case UserRole.Patient: return MainPage.buildPageRoute();
+        case UserRole.Doctor: return MainDoctorPage.buildPageRoute();
       }
     }
     return LoginPage.buildPageRoute();
