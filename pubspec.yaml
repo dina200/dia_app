@@ -27,7 +27,6 @@ dependencies:
     sdk: flutter
 
   intl: ^0.17.0
-  line_chart: ^1.1.11
   shared_preferences: ^2.0.8
   google_sign_in: ^4.5.9
   firebase_auth: ^3.2.0

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
-import 'package:line_chart/charts/line-chart.widget.dart';
-import 'package:line_chart/model/line-chart.model.dart';
 import 'package:provider/provider.dart';
 
 import 'package:dia_app/src/app/routes.dart' as routes;
@@ -9,6 +7,8 @@ import 'package:dia_app/src/app/widgets/time_range_filter_tile.dart';
 import 'package:dia_app/src/app/widgets/loading_layout.dart';
 import 'package:dia_app/src/domain/entities/time_range.dart';
 
+import 'widgets/line_chart/chart/animated_line_chart.dart';
+import 'widgets/line_chart/chart/line_chart.dart';
 import 'diagnosis_page_presenter.dart';
 
 part 'widgets/_diagnosis_chart.dart';

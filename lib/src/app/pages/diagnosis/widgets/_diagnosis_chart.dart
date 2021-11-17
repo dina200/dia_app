@@ -7,28 +7,24 @@ class _DiagnosisChart extends StatelessWidget {
     final locale = DiaLocalizations.of(context);
     final watch = context.watch<DiagnosisPagePresenter>();
 
-    final statistic = watch.bloodSugarStatistic.entries.map(
-            (entry) {
-          return LineChartModel(date: entry.key, amount: entry.value);
-        }
-    ).toList();
+    final statistic = watch.bloodSugarStatistic;
     if (statistic == null) {
       return SizedBox();
     } else if (statistic.isEmpty || statistic.length == 1) {
       return Center(child: Text(locale.noData));
     }
 
-    final size = MediaQuery.of(context).size;
+    LineChart chart = LineChart.fromDateTimeMaps(
+      [statistic],
+      [theme.primaryColor],
+      [locale.mmolPerL],
+    );
     return SizedBox.expand(
-      child: LineChart(
-
-        data: statistic,
-        linePaint: Paint()
-          ..strokeWidth = 3.0
-          ..style = PaintingStyle.stroke
-          ..color = theme.primaryColor,
-        width: size.width,
-        height: size.height / 3,
+      child: AnimatedLineChart(
+        chart,
+        textStyle: theme.textTheme.caption,
+        gridColor: theme.disabledColor,
+        toolTipColor: theme.primaryColor,
       ),
     );
   }
