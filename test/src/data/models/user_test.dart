@@ -17,10 +17,15 @@ main() {
     ],
   );
   test(
-    'User type : Patient and Doctor are User',
+    'User type : Patient is User',
     () {
       expect(patient, isA<User>());
-      expect(doctor, isA<User>());
+    },
+  );
+  test(
+    'User type : Doctor is User',
+    () {
+      expect(patient, isA<User>());
     },
   );
 }

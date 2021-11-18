@@ -26,15 +26,15 @@ class FirebaseAuthRepository extends AuthRepository {
   }
 
   @override
-  Future<UserRole> get role async {
+  Future<UserType> get userType async {
     if (await isLoggedIn) {
-      return await _storeInteractor.getRole();
+      return await _storeInteractor.getUserType();
     }
     return null;
   }
 
   @override
-  Future<void> loginWithGoogle() async {
+  Future<void> loginWithGoogleAsPatient() async {
     final googleAuthentication = await _googleService.getGoogleAuthData();
     final credential =  auth.GoogleAuthProvider.credential(
       idToken: googleAuthentication.idToken,
@@ -42,6 +42,7 @@ class FirebaseAuthRepository extends AuthRepository {
     );
     final authResult = await _firebaseAuth.signInWithCredential(credential);
     await _savePatientData(authResult.user);
+    super.loginWithGoogleAsPatient();
   }
 
 
@@ -54,18 +55,20 @@ class FirebaseAuthRepository extends AuthRepository {
     );
     final authResult = await _firebaseAuth.signInWithCredential(credential);
     await _saveDoctorData(authResult.user);
+    super.loginWithGoogleAsDoctor();
   }
 
   @override
   Future<void> logOut() async {
     await _googleService.signOut();
-    await _storeInteractor.removeRole();
+    await _storeInteractor.removeType();
     await _storeInteractor.removeToken();
+    super.logOut();
   }
 
   Future<void> _savePatientData(auth.User user) async {
     await _storeInteractor.setToken(user.uid);
-    await _storeInteractor.setRole(UserRole.Patient);
+    await _storeInteractor.setUserType(UserType.Patient);
     await DiaFirestoreHelper.savePatientData(
       await _storeInteractor.getToken(),
       user.displayName,
@@ -75,7 +78,7 @@ class FirebaseAuthRepository extends AuthRepository {
 
   Future<void> _saveDoctorData(auth.User user) async {
     await _storeInteractor.setToken(user.uid);
-    await _storeInteractor.setRole(UserRole.Doctor);
+    await _storeInteractor.setUserType(UserType.Doctor);
     await DiaFirestoreHelper.saveDoctorData(
       await _storeInteractor.getToken(),
       user.displayName,

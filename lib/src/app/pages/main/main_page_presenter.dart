@@ -15,7 +15,7 @@ import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 class MainPagePresenter with ChangeNotifier {
   final BuildContext _context;
   final AuthRepository _authRepository;
-  final PatientRepository _patientrRepository;
+  final PatientRepository _patientRepository;
 
   Patient _patient;
   List<BloodSugarStatistic> _bloodSugarStatistic;
@@ -37,7 +37,7 @@ class MainPagePresenter with ChangeNotifier {
 
   MainPagePresenter(this._context)
       : _authRepository = GetIt.I.get<AuthRepository>(),
-        _patientrRepository = GetIt.I.get<PatientRepository>() {
+        _patientRepository = GetIt.I.get<UserRepository>() {
     init();
   }
 
@@ -47,8 +47,8 @@ class MainPagePresenter with ChangeNotifier {
     notifyListeners();
 
     final results = await Future.wait([
-      _patientrRepository.fetchCurrentPatient(),
-      _patientrRepository.fetchBloodSugarStatistic(),
+      _patientRepository.fetchCurrentPatient(),
+      _patientRepository.fetchBloodSugarStatistic(),
     ]);
 
     _patient = results[0];
@@ -63,8 +63,8 @@ class MainPagePresenter with ChangeNotifier {
     _isPatientLoading = true;
     notifyListeners();
 
-    await _patientrRepository.changePatientData(name, docEmail);
-    _patient = await _patientrRepository.fetchCurrentPatient();
+    await _patientRepository.changePatientData(name, docEmail);
+    _patient = await _patientRepository.fetchCurrentPatient();
 
     _isPatientLoading = false;
     notifyListeners();
@@ -84,7 +84,7 @@ class MainPagePresenter with ChangeNotifier {
     _isSavingData = true;
     notifyListeners();
 
-    await _patientrRepository.saveBloodSugarData(
+    await _patientRepository.saveBloodSugarData(
       BloodSugarStatistic(bloodSugar: double.parse(value)),
     );
 
@@ -99,7 +99,7 @@ class MainPagePresenter with ChangeNotifier {
     notifyListeners();
 
     _timeRangeFilter = filter;
-    _bloodSugarStatistic = await _patientrRepository
+    _bloodSugarStatistic = await _patientRepository
         .fetchBloodSugarStatistic(TimeRange.getEntityByFilter(filter));
 
     _isStatisticLoading = false;

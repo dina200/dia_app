@@ -6,12 +6,26 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
+  UserRepositoryFactory _userRepositoryFactory;
   PatientRepository _patientRepository;
   DoctorRepository _doctorRepository;
 
   setUp(() {
+    _userRepositoryFactory = MockUserRepositoryFactory();
     _patientRepository = MockPatientRepository();
     _doctorRepository = MockDoctorRepository();
+  });
+
+  group('UserRepositoryFactory', (){
+    test('create PatientRepository', ()  {
+      final repository = _userRepositoryFactory.createUserRepository(UserType.Patient);
+      expect(repository, isA<PatientRepository>());
+    });
+
+    test('create DoctorRepository', ()  {
+      final repository = _userRepositoryFactory.createUserRepository(UserType.Doctor);
+      expect(repository, isA<DoctorRepository>());
+    });
   });
 
   group('PatientRepository', () {

@@ -7,14 +7,14 @@ import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 
 class MockUserRepositoryFactory extends UserRepositoryFactory {
   @override
-  UserRepository createUserRepository(UserRole type) {
+  UserRepository createUserRepository(UserType type) {
     switch(type) {
-      case UserRole.Patient:
+      case UserType.Patient:
         return MockPatientRepository();
-      case UserRole.Doctor:
+      case UserType.Doctor:
         return MockDoctorRepository();
       default:
-        return MockPatientRepository();
+        throw AssertionError('This user type do not exist');
     }
   }
 }

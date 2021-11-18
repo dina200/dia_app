@@ -22,7 +22,7 @@ class MainDoctorPagePresenter with ChangeNotifier {
 
   MainDoctorPagePresenter()
       : _authRepository = GetIt.I.get<AuthRepository>(),
-        _doctorRepository = GetIt.I.get<DoctorRepository>() {
+        _doctorRepository = GetIt.I.get<UserRepository>() {
     init();
   }
 

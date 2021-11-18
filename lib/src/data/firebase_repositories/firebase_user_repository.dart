@@ -14,14 +14,14 @@ import 'dia_firestore_helper.dart';
 
 class FirebaseUserRepositoryFactory extends UserRepositoryFactory {
   @override
-  UserRepository createUserRepository(UserRole type) {
+  UserRepository createUserRepository(UserType type) {
     switch(type) {
-      case UserRole.Patient:
+      case UserType.Patient:
         return FirebasePatientRepository();
-      case UserRole.Doctor:
+      case UserType.Doctor:
         return FirebaseDoctorRepository();
       default:
-        return FirebasePatientRepository();
+        throw AssertionError('This user type do not exist');
     }
   }
 }

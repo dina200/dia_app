@@ -15,9 +15,9 @@ main() {
     });
 
     test(
-      'role',
+      'userType',
       () async {
-        expect(UserRole.Patient, equals(await _authRepository.role));
+        expect(UserType.Patient, equals(await _authRepository.userType));
       },
     );
   });

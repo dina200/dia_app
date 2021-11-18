@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-enum UserRole {
+enum UserType {
   Patient,
   Doctor,
 }

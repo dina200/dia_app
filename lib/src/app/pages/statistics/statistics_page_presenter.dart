@@ -11,7 +11,7 @@ class StatisticPagePresenter extends ChangeNotifier {
   final UserRepository _patientRepository;
 
   StatisticPagePresenter(this.patientId)
-      : _patientRepository = GetIt.I.get<PatientRepository>() {
+      : _patientRepository = GetIt.I.get<UserRepository>() {
     init();
   }
 

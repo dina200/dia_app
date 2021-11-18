@@ -2,7 +2,7 @@ import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _TOKEN = 'token';
-const _ROLE = 'role';
+const _USER_TYPE = 'type';
 
 class StoreInteractor {
   Future<String> getToken() async {
@@ -20,29 +20,29 @@ class StoreInteractor {
     return await prefs.remove(_TOKEN);
   }
 
-  Future<UserRole> getRole() async {
+  Future<UserType> getUserType() async {
     final prefs = await SharedPreferences.getInstance();
-    switch (prefs.getInt(_ROLE)) {
-      case 0: return UserRole.Patient;
-      case 1: return UserRole.Doctor;
+    switch (prefs.getInt(_USER_TYPE)) {
+      case 0: return UserType.Patient;
+      case 1: return UserType.Doctor;
     }
     return null;
   }
 
-  Future<void> setRole(UserRole role) async {
+  Future<void> setUserType(UserType userType) async {
     final prefs = await SharedPreferences.getInstance();
-    switch (role) {
-      case UserRole.Patient:
-        await prefs.setInt(_ROLE, 0);
+    switch (userType) {
+      case UserType.Patient:
+        await prefs.setInt(_USER_TYPE, 0);
         break;
-      case UserRole.Doctor:
-        await prefs.setInt(_ROLE, 1);
+      case UserType.Doctor:
+        await prefs.setInt(_USER_TYPE, 1);
         break;
     }
   }
 
-  Future<bool> removeRole() async {
+  Future<bool> removeType() async {
     final prefs = await SharedPreferences.getInstance();
-    return await prefs.remove(_ROLE);
+    return await prefs.remove(_USER_TYPE);
   }
 }

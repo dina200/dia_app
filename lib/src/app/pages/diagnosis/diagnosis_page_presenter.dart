@@ -23,7 +23,7 @@ class DiagnosisPagePresenter with ChangeNotifier {
   String get min => _min ?? '...';
   String get max => _max ?? '...';
 
-  DiagnosisPagePresenter() : _patientRepository = GetIt.I.get<PatientRepository>(){
+  DiagnosisPagePresenter() : _patientRepository = GetIt.I.get<UserRepository>(){
     init();
   }
 
