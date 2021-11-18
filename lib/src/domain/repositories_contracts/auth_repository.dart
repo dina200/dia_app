@@ -9,5 +9,5 @@ abstract class AuthRepository {
 
   Future<void> loginWithGoogleAsDoctor();
 
-  Future<bool> logOut();
+  Future<void> logOut();
 }

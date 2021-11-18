@@ -5,6 +5,20 @@ import 'package:dia_app/src/domain/entities/time_range.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 
+class MockUserRepositoryFactory extends UserRepositoryFactory {
+  @override
+  UserRepository createUserRepository(UserRole type) {
+    switch(type) {
+      case UserRole.Patient:
+        return MockPatientRepository();
+      case UserRole.Doctor:
+        return MockDoctorRepository();
+      default:
+        return MockPatientRepository();
+    }
+  }
+}
+
 class MockPatientRepository extends _MockUserRepository
     implements PatientRepository {
   @override

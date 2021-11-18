@@ -1,10 +1,10 @@
 import 'package:dia_app/src/data/mock_repositories/mock_auth_repository.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
+import 'package:dia_app/src/domain/repositories_contracts/auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
-  MockAuthRepository _authRepository;
-
+  AuthRepository _authRepository;
   setUp(() {
     _authRepository = MockAuthRepository();
   });
@@ -18,14 +18,6 @@ main() {
       'role',
       () async {
         expect(UserRole.Patient, equals(await _authRepository.role));
-      },
-    );
-
-    test(
-      'logOut',
-      () async {
-        final isLogout = _authRepository.logOut();
-        expect(true, equals(await isLogout));
       },
     );
   });

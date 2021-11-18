@@ -8,7 +8,6 @@ main() {
     email: 'patient@gmail.com',
     docsEmail: 'doctor@gmail.com',
   );
-
   final doctor = Doctor(
     id: 'Doctor987654321',
     fullName: 'Doctor',
@@ -17,7 +16,6 @@ main() {
       'Patient987654321',
     ],
   );
-
   test(
     'User type : Patient and Doctor are User',
     () {

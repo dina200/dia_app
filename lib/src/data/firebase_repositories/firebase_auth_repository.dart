@@ -57,10 +57,10 @@ class FirebaseAuthRepository extends AuthRepository {
   }
 
   @override
-  Future<bool> logOut() async {
+  Future<void> logOut() async {
     await _googleService.signOut();
     await _storeInteractor.removeRole();
-    return await _storeInteractor.removeToken();
+    await _storeInteractor.removeToken();
   }
 
   Future<void> _savePatientData(auth.User user) async {

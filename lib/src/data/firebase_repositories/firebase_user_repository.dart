@@ -12,6 +12,20 @@ import 'package:get_it/get_it.dart';
 
 import 'dia_firestore_helper.dart';
 
+class FirebaseUserRepositoryFactory extends UserRepositoryFactory {
+  @override
+  UserRepository createUserRepository(UserRole type) {
+    switch(type) {
+      case UserRole.Patient:
+        return FirebasePatientRepository();
+      case UserRole.Doctor:
+        return FirebaseDoctorRepository();
+      default:
+        return FirebasePatientRepository();
+    }
+  }
+}
+
 class FirebasePatientRepository extends _FirebaseUserRepository
     implements PatientRepository {
   @override

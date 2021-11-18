@@ -11,13 +11,11 @@ class MockAuthRepository extends AuthRepository {
   Future<UserRole> get role async => UserRole.Patient;
 
   @override
-  Future<bool> logOut() async {
-    return true;
-  }
-
-  @override
   Future<void> loginWithGoogle() async {}
 
   @override
   Future<void> loginWithGoogleAsDoctor() async {}
+
+  @override
+  Future<void> logOut() async {}
 }

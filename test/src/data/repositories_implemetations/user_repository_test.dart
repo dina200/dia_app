@@ -1,12 +1,13 @@
 import 'package:dia_app/src/data/mock_repositories/mock_user_repository.dart';
 import 'package:dia_app/src/domain/entities/statistic.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
+import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
-  MockPatientRepository _patientRepository;
-  MockDoctorRepository _doctorRepository;
+  PatientRepository _patientRepository;
+  DoctorRepository _doctorRepository;
 
   setUp(() {
     _patientRepository = MockPatientRepository();
