@@ -25,7 +25,7 @@ main() {
   test(
     'User type : Doctor is User',
     () {
-      expect(patient, isA<User>());
+      expect(doctor, isA<User>());
     },
   );
 }
