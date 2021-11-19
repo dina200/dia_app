@@ -17,34 +17,23 @@ import 'src/domain/repositories_contracts/user_repository.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   GetIt.I
     ..registerSingleton<GoogleService>(GoogleService())
     ..registerSingleton<StoreInteractor>(StoreInteractor())
     ..registerSingleton<AuthRepository>(FirebaseAuthRepository())
     ..registerSingleton<UserRepositoryFactory>(FirebaseUserRepositoryFactory());
 
-  final authRepo = GetIt.I<AuthRepository>();
-  final isLoggedIn = await authRepo.isLoggedIn;
-  final userType = await authRepo.userType;
-  if (isLoggedIn) {
-    GetIt.I.registerSingleton<UserRepository>(
-      GetIt.I<UserRepositoryFactory>().createUserRepository(userType),
-    );
-  }
-  runApp(MyApp(isLoggedIn: isLoggedIn, userType: userType));
+  final userType = await GetIt.I<AuthRepository>().init();
+  runApp(MyApp(userType: userType));
 }
 
 class MyApp extends StatelessWidget {
-  final bool isLoggedIn;
   final UserType userType;
 
   const MyApp({
     Key key,
-    @required this.isLoggedIn,
     @required this.userType,
-  })  : assert(isLoggedIn != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +53,7 @@ class MyApp extends StatelessWidget {
   }
 
   Route _onGenerateRoute(RouteSettings settings) {
-    if (isLoggedIn) {
+    if (userType != null) {
       switch(userType) {
         case UserType.Patient: return MainPage.buildPageRoute();
         case UserType.Doctor: return MainDoctorPage.buildPageRoute();

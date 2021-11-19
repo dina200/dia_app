@@ -26,6 +26,7 @@ class LoginPagePresenter with ChangeNotifier {
     try {
       await login();
     } catch (e) {
+      //TODO: handle this
       rethrow;
     } finally {
       _isLoginProcess = false;
