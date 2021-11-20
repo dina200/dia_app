@@ -22,7 +22,7 @@ class DiagnosticsTab extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child:Center(child: _BloodSugarStorageForm()),
+              child: Center(child: _BloodSugarStorageForm()),
             ),
             _DiagnosisButton(),
           ],

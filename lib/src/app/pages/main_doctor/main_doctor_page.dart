@@ -1,13 +1,13 @@
-import 'package:dia_app/src/app/pages/main_doctor/tabs/patients/patients_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'package:dia_app/src/app/pages/main_doctor/tabs/patients/patients_tab.dart';
 import 'package:dia_app/src/app/pages/login/login_page.dart';
-import 'package:dia_app/src/app/widgets/loading_layout.dart';
 import 'package:dia_app/src/app/pages/main_doctor/tabs/doctor/doctor_tab.dart';
-import 'package:dia_app/src/app/pages/main_doctor/main_doctor_presenter.dart';
+import 'package:dia_app/src/app/pages/main_doctor/main_doctor_page_presenter.dart';
 import 'package:dia_app/src/app/routes.dart' as routes;
+import 'package:dia_app/src/app/widgets/loading_layout.dart';
 
 class MainDoctorPage extends StatefulWidget {
   static const nameRoute = routes.mainDoctor;

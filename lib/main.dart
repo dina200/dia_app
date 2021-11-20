@@ -7,7 +7,7 @@ import 'package:get_it/get_it.dart';
 
 import 'src/app/pages/login/login_page.dart';
 import 'src/app/pages/main/main_page.dart';
-import 'src/app/pages/main_doctor/main_doctor.dart';
+import 'src/app/pages/main_doctor/main_doctor_page.dart';
 import 'src/data/firebase_repositories/firebase_auth_repository.dart';
 import 'src/data/firebase_repositories/firebase_user_repository.dart';
 import 'src/device/utils/google_service.dart';

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:dia_app/src/app/routes.dart' as routes;
 import 'package:dia_app/src/app/pages/main/main_page.dart';
-import 'package:dia_app/src/app/pages/main_doctor/main_doctor.dart';
+import 'package:dia_app/src/app/pages/main_doctor/main_doctor_page.dart';
 import 'package:dia_app/src/app/widgets/loading_layout.dart';
 import 'package:dia_app/src/domain/entities/exceptions.dart';
 

@@ -54,6 +54,24 @@ class MockDoctorRepository extends _MockUserRepository
         email: 'patient@gmail.com',
         docsEmail: 'doctor@gmail.com',
       ),
+      Patient(
+        id: 'Patient9876543211',
+        fullName: 'Patient1',
+        email: 'patient1@gmail.com',
+        docsEmail: 'doctor@gmail.com',
+      ),
+      Patient(
+        id: 'Patient9876543212',
+        fullName: 'Patient2',
+        email: 'patient2@gmail.com',
+        docsEmail: 'doctor@gmail.com',
+      ),
+      Patient(
+        id: 'Patient9876543213',
+        fullName: 'Patient3',
+        email: 'patient3@gmail.com',
+        docsEmail: 'doctor@gmail.com',
+      ),
     ];
   }
 }
