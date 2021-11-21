@@ -6,7 +6,7 @@ main() {
     id: 'Patient987654321',
     fullName: 'Patient',
     email: 'patient@gmail.com',
-    docsEmail: 'doctor@gmail.com',
+    docEmail: 'doctor@gmail.com',
   );
   final doctor = Doctor(
     id: 'Doctor987654321',

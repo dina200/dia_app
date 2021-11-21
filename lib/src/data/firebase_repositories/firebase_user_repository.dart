@@ -71,10 +71,10 @@ class FirebaseDoctorRepository extends _FirebaseUserRepository
     final doctor = await fetchDoctor();
     if (doctor.patientIds != null) {
       final mappedList = doctor.patientIds.map(
-            (id) async {
-          return await fetchPatientById(id);
-        },
-      );
+          (id) async {
+            return await fetchPatientById(id);
+          },
+        );
       return await Future.wait(mappedList);
     }
     return [];
@@ -104,7 +104,7 @@ abstract class _FirebaseUserRepository extends UserRepository {
       id: data[ID],
       email: data[EMAIL],
       fullName: data[NAME],
-      docsEmail: data[DOC_EMAIL],
+      docEmail: data[DOC_EMAIL],
     );
   }
 

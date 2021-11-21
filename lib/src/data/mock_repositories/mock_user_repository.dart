@@ -5,7 +5,7 @@ import 'package:dia_app/src/domain/entities/time_range.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 
-class MockUserRepositoryFactory extends UserRepositoryFactory {
+class MockUserRepositoryFactory implements UserRepositoryFactory {
   @override
   UserRepository createUserRepository(UserType type) {
     switch(type) {
@@ -52,31 +52,31 @@ class MockDoctorRepository extends _MockUserRepository
         id: 'Patient987654321',
         fullName: 'Patient',
         email: 'patient@gmail.com',
-        docsEmail: 'doctor@gmail.com',
+        docEmail: 'doctor@gmail.com',
       ),
       Patient(
         id: 'Patient9876543211',
         fullName: 'Patient1',
         email: 'patient1@gmail.com',
-        docsEmail: 'doctor@gmail.com',
+        docEmail: 'doctor@gmail.com',
       ),
       Patient(
         id: 'Patient9876543212',
         fullName: 'Patient2',
         email: 'patient2@gmail.com',
-        docsEmail: 'doctor@gmail.com',
+        docEmail: 'doctor@gmail.com',
       ),
       Patient(
         id: 'Patient9876543213',
         fullName: 'Patient3',
         email: 'patient3@gmail.com',
-        docsEmail: 'doctor@gmail.com',
+        docEmail: 'doctor@gmail.com',
       ),
     ];
   }
 }
 
-abstract class _MockUserRepository extends UserRepository {
+abstract class _MockUserRepository implements UserRepository {
   @override
   Future<List<BloodSugarStatistic>> fetchBloodSugarStatisticByPatientId(
       String patientId,
@@ -115,7 +115,7 @@ abstract class _MockUserRepository extends UserRepository {
       id: 'Patient987654321',
       fullName: 'Patient',
       email: 'patient@gmail.com',
-      docsEmail: 'doctor@gmail.com',
+      docEmail: 'doctor@gmail.com',
     );
   }
 }

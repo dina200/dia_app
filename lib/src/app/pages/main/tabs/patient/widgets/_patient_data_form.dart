@@ -63,7 +63,7 @@ class _PatientDataFormState extends State<_PatientDataForm> {
                 child: SizeWrapperForTextFormField(
                   child: TextFormField(
                     key: _docEmailKey,
-                    initialValue: _watch.patient.docsEmail,
+                    initialValue: _watch.patient.docEmail,
                     textAlign: TextAlign.center,
                     validator: _docEmailValidator,
                     decoration: InputDecoration(hintText: _locale.docEmailExample),

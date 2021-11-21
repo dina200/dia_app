@@ -24,21 +24,19 @@ abstract class User {
           id == other.id &&
           email == other.email &&
           fullName == other.fullName;
-
   @override
   int get hashCode => id.hashCode ^ email.hashCode ^ fullName.hashCode;
 }
 
 class Patient extends User {
-  final String docsEmail;
+  final String docEmail;
 
-  Patient({String id, String email, String fullName, this.docsEmail})
+  Patient({String id, String email, String fullName, this.docEmail})
       : super (id: id, email: email, fullName: fullName);
 }
 
 class Doctor extends User {
-  final List patientIds;
-
+  final List<String> patientIds;
   Doctor({String id, String email, String fullName, this.patientIds})
       : super (id: id, email: email, fullName: fullName);
 }
