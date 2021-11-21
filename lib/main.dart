@@ -1,5 +1,3 @@
-import 'package:dia_app/src/device/utils/store_interactor.dart';
-import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/dia_localizations.dart';
@@ -11,6 +9,8 @@ import 'src/app/pages/main_doctor/main_doctor_page.dart';
 import 'src/data/firebase_repositories/firebase_auth_repository.dart';
 import 'src/data/firebase_repositories/firebase_user_repository.dart';
 import 'src/device/utils/google_service.dart';
+import 'src/device/utils/store_interactor.dart';
+import 'src/domain/entities/user.dart';
 import 'src/domain/repositories_contracts/auth_repository.dart';
 import 'src/domain/repositories_contracts/user_repository.dart';
 

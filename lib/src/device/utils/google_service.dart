@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'package:dia_app/src/domain/entities/exceptions.dart';
 
 class GoogleService {

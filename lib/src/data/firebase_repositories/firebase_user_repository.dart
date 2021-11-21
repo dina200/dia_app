@@ -2,15 +2,14 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
 
+import 'package:dia_app/src/data/firebase_repositories/dia_firestore_helper.dart';
 import 'package:dia_app/src/device/utils/store_interactor.dart';
 import 'package:dia_app/src/domain/entities/statistic.dart';
 import 'package:dia_app/src/domain/entities/time_range.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
-import 'package:get_it/get_it.dart';
-
-import 'dia_firestore_helper.dart';
 
 class FirebaseUserRepositoryFactory extends UserRepositoryFactory {
   @override

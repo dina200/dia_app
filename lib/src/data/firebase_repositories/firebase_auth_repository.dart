@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:get_it/get_it.dart';
 
+import 'package:dia_app/src/data/firebase_repositories/dia_firestore_helper.dart';
 import 'package:dia_app/src/domain/entities/user.dart';
 import 'package:dia_app/src/device/utils/google_service.dart';
 import 'package:dia_app/src/device/utils/store_interactor.dart';
 import 'package:dia_app/src/domain/repositories_contracts/auth_repository.dart';
-
-import 'dia_firestore_helper.dart';
 
 class FirebaseAuthRepository extends AuthRepository {
   final auth.FirebaseAuth _firebaseAuth;

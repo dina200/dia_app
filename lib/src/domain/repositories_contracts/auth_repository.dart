@@ -1,7 +1,7 @@
-import 'package:dia_app/src/domain/entities/user.dart';
-import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:dia_app/src/domain/entities/user.dart';
+import 'package:dia_app/src/domain/repositories_contracts/user_repository.dart';
 
 abstract class AuthRepository {
   Future<bool> get isLoggedIn;
